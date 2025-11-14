@@ -80,7 +80,7 @@ export const VisionCard = () => {
 
     // --- Audio Initialization ---
     const initAudio = async () => {
-        if (audioInitialized.current || !window) return;
+        if (audioInitialized.current || typeof window === 'undefined') return;
         try {
             await Tone.start();
             scratchPlayer.current = new Tone.Player({
@@ -136,7 +136,9 @@ export const VisionCard = () => {
 
     const stopScratching = () => {
         isDrawing.current = false;
-        scratchPlayer.current?.stop();
+        if (scratchPlayer.current?.state === 'started') {
+            scratchPlayer.current?.stop();
+        }
     };
 
     const scratchAt = (e: React.MouseEvent | React.TouchEvent) => {
