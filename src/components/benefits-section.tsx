@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { BarChart, Trophy, ShieldCheck, Star } from "lucide-react";
+import { ShieldCheck, Star, Gem } from "lucide-react";
 
 const benefits = [
   {
@@ -8,8 +8,8 @@ const benefits = [
     description: "Raspe e descubra na hora o que você ganhou. Sem espera, sem complicação.",
   },
   {
-    icon: Trophy,
-    title: "Altas Chances de Ganhar",
+    icon: Gem,
+    title: "Acesso Exclusivo",
     description: "Nossas raspadinhas são calibradas pela preguiça para dar os melhores resultados.",
   },
   {

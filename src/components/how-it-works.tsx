@@ -1,4 +1,4 @@
-import { Eye, BrainCircuit, Sparkles } from "lucide-react";
+import { BrainCircuit, Ticket, Gift } from "lucide-react";
 
 const steps = [
   {
@@ -7,12 +7,12 @@ const steps = [
     description: "Nossa preguiça canaliza sua energia mística para prever os resultados mais quentes.",
   },
   {
-    icon: Sparkles,
+    icon: Ticket,
     title: "2. O Prêmio é Selado",
     description: "A previsão vira um prêmio escondido em uma raspadinha dourada, esperando por você.",
   },
   {
-    icon: Eye,
+    icon: Gift,
     title: "3. Raspe e Ganhe",
     description: "Você revela a previsão premiada. É simples, rápido e pode encher seu bolso!",
   },
@@ -21,7 +21,7 @@ const steps = [
 export const HowItWorks = () => {
   return (
     <section className="py-12 md:py-20 text-center">
-      <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-2">Como ganhar é fácil?</h2>
+      <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-2">Sua Sorte em 3 Passos Simples</h2>
       <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
         Nosso processo é simples, rápido e feito para você lucrar.
       </p>

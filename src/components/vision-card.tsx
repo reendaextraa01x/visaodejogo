@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import { Sparkles, BarChart, BrainCircuit, Eye, Dribbble, Shield } from 'lucide-react';
+import { Sparkles, BarChart, BrainCircuit, Eye, Dribbble, Shield, Ticket } from 'lucide-react';
 import type { SVGProps } from 'react';
 
 const SlothWithBallIcon = (props: SVGProps<SVGSVGElement>) => (
@@ -29,9 +29,8 @@ const SlothWithBallIcon = (props: SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
-
 const predictions = [
-    "Prêmio: R$500!",
+    "Prêmio: R$100!",
     'Você ganhou um iPhone 15!',
     'Bônus de R$1000 em Apostas!',
     'Uma Viagem para a Final!',
@@ -53,7 +52,8 @@ export const VisionCard = () => {
     const [isRevealed, setIsRevealed] = useState(false);
 
     useEffect(() => {
-        setPrediction(predictions[Math.floor(Math.random() * predictions.length)]);
+        // Set the prize to R$100 specifically
+        setPrediction("Prêmio: R$100!");
     }, []);
 
     const handleFlip = () => {
@@ -77,9 +77,9 @@ export const VisionCard = () => {
                     {/* Card Front */}
                     <div className="absolute w-full h-full backface-hidden overflow-hidden rounded-2xl bg-gradient-to-br from-card to-background border-2 border-primary/20 shadow-2xl flex flex-col items-center justify-center p-8 cursor-pointer group">
                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                         <SlothWithBallIcon className="w-40 h-40 text-primary opacity-20 group-hover:opacity-30 transition-opacity" />
+                         <Ticket className="w-40 h-40 text-primary opacity-20 group-hover:opacity-30 transition-opacity" />
                          <h3 className="font-headline text-3xl text-foreground drop-shadow-lg mt-4 z-10">Toque para Revelar</h3>
-                         <p className="text-muted-foreground z-10">A visão da preguiça aguarda...</p>
+                         <p className="text-muted-foreground z-10">Sua raspadinha da sorte aguarda...</p>
                     </div>
 
                     {/* Card Back */}
@@ -116,7 +116,7 @@ export const VisionCard = () => {
                             className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-lg h-14 rounded-full shadow-lg shadow-primary/30 focus:shadow-primary/40 focus:ring-2 focus:ring-offset-2 focus:ring-primary animate-pulse-strong"
                         >
                             <Sparkles className="mr-2 h-5 w-5" />
-                            PEGAR MINHA RASPADINHA
+                            RESGATAR PRÊMIO AGORA
                         </Button>
                     </Link>
                 </div>
