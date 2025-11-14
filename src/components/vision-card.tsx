@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import { Gift, Sparkles } from 'lucide-react';
+import { Gift, Sparkles, Star } from 'lucide-react';
 import type { SVGProps } from 'react';
 
 const SlothWithBallIcon = (props: SVGProps<SVGSVGElement>) => (
@@ -37,53 +37,77 @@ const predictions = [
   'Zebra à vista!',
 ];
 
+const PlayerCardFront = () => (
+    <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800 to-black rounded-2xl shadow-2xl p-4 flex flex-col justify-center items-center backface-hidden border-2 border-primary/20">
+        <div className="absolute inset-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgSCAwIFYgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iaHNsYSgyMjgsIDksIDE1LCgwLjIpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
+        <SlothWithBallIcon className="w-24 h-24 text-primary drop-shadow-[0_5px_15px_rgba(234,179,8,0.4)] opacity-50" />
+        <p className="font-headline text-2xl text-white mt-4">CLIQUE PARA REVELAR</p>
+    </div>
+);
+
+const PlayerCardBack = ({ prediction }: { prediction: string }) => (
+    <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-primary/80 via-primary to-yellow-300 rounded-2xl shadow-2xl p-4 flex flex-col justify-between backface-hidden rotate-y-180 border-2 border-amber-300">
+        <div className="flex justify-between items-start">
+            <div className="text-left">
+                <p className="font-headline text-3xl text-black">99</p>
+                <p className="font-body text-xs font-bold text-black/80 -mt-1">VIS</p>
+            </div>
+            <div className="flex flex-col items-center">
+                <SlothWithBallIcon className="w-16 h-16 text-black/80" />
+                <p className="font-headline text-lg text-black -mt-2">O VIDENTE</p>
+            </div>
+            <div className="text-right">
+                <p className="font-headline text-3xl text-black">BR</p>
+                <p className="font-body text-xs font-bold text-black/80 -mt-1">PAÍS</p>
+            </div>
+        </div>
+
+        <div className="text-center my-4">
+            <p className="font-headline text-4xl text-black drop-shadow-sm">{prediction}</p>
+        </div>
+
+        <div className="grid grid-cols-3 gap-2 text-center text-black">
+            <div><p className="font-headline text-2xl">1</p><p className="text-xs font-bold -mt-1">RIT</p></div>
+            <div><p className="font-headline text-2xl">85</p><p className="text-xs font-bold -mt-1">DRB</p></div>
+            <div><p className="font-headline text-2xl">20</p><p className="text-xs font-bold -mt-1">DEF</p></div>
+            <div><p className="font-headline text-2xl">99</p><p className="text-xs font-bold -mt-1">PAS</p></div>
+            <div><p className="font-headline text-2xl">70</p><p className="text-xs font-bold -mt-1">FIN</p></div>
+            <div><p className="font-headline text-2xl">95</p><p className="text-xs font-bold -mt-1">FÍS</p></div>
+        </div>
+    </div>
+);
+
+
 export const VisionCard = () => {
   const [prediction, setPrediction] = useState('');
   const [isRevealed, setIsRevealed] = useState(false);
-  const [isRevealing, setIsRevealing] = useState(false);
 
   useEffect(() => {
     setPrediction(predictions[Math.floor(Math.random() * predictions.length)]);
   }, []);
 
   const handleReveal = () => {
-    if (isRevealing || isRevealed) return;
-    setIsRevealing(true);
-    setTimeout(() => {
-      setIsRevealed(true);
-      setIsRevealing(false);
-    }, 1500);
+    if (isRevealed) return;
+    setIsRevealed(true);
   };
 
   return (
     <div className="flex flex-col items-center gap-6 w-full max-w-md">
-      <div
-        className="relative w-[300px] h-[300px] cursor-pointer group"
-        onClick={handleReveal}
-      >
-        <SlothWithBallIcon
-            className={cn(
-                "absolute inset-0 w-full h-full text-primary transition-all duration-500",
-                isRevealing && "animate-pulse-strong"
-            )}
-        />
         <div 
-            className={cn(
-                "absolute inset-0 flex items-center justify-center transition-opacity duration-1000",
-                isRevealed ? 'opacity-100' : 'opacity-0'
-            )}
+            className="w-[300px] h-[420px] perspective-1000 group"
+            onClick={handleReveal}
         >
-            <div className='absolute inset-0 rounded-full bg-primary/20 animate-ping-slow'></div>
-            <div className='absolute inset-0 rounded-full bg-primary/10 animate-ping-slow delay-500'></div>
-            <p className="font-headline text-4xl text-white z-10 drop-shadow-lg">{prediction}</p>
+            <div 
+                className={cn(
+                    "relative w-full h-full transform-style-3d transition-transform duration-700 cursor-pointer",
+                    isRevealed ? 'rotate-y-180' : ''
+                )}
+            >
+                <PlayerCardFront />
+                <PlayerCardBack prediction={prediction} />
+            </div>
         </div>
 
-        {!isRevealed && !isRevealing && (
-             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <p className="font-headline text-2xl text-white bg-black/50 px-4 py-2 rounded-lg">REVELAR A VISÃO</p>
-             </div>
-        )}
-      </div>
 
       {isRevealed && (
         <div className="w-full max-w-sm animate-fade-in text-center bg-card/80 p-6 rounded-lg shadow-lg border-primary/20 mt-4">
