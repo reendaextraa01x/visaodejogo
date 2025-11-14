@@ -22,8 +22,9 @@ export const TiktokSection = () => {
   const videoPlaceholders = PlaceHolderImages.filter((p) => tiktokVideos.some((v) => v.id === p.id));
 
   return (
-    <section className="py-12">
-      <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-8">Nossas Visões no TikTok</h2>
+    <section className="py-12 md:py-20">
+      <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-2">Nossas Visões no TikTok</h2>
+      <p className="text-lg text-muted-foreground mb-8">Veja as previsões que viralizaram.</p>
       <Carousel
         opts={{
           align: 'start',
@@ -35,9 +36,9 @@ export const TiktokSection = () => {
           {tiktokVideos.map((video, index) => {
             const placeholder = videoPlaceholders.find((p) => p.id === video.id);
             return (
-              <CarouselItem key={index} className="pl-4 basis-1/2 md:basis-1/3">
+              <CarouselItem key={index} className="pl-4 basis-2/3 sm:basis-1/2 md:basis-1/3">
                 <Link href={video.url} target="_blank" rel="noopener noreferrer">
-                  <Card className="overflow-hidden group border-primary/20 shadow-md">
+                  <Card className="overflow-hidden group border-border shadow-md transition-all hover:border-primary hover:shadow-primary/20">
                     <CardContent className="p-0 relative aspect-[9/16]">
                       {placeholder && (
                         <Image

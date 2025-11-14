@@ -84,7 +84,12 @@ export const ScratchCard = () => {
     img.crossOrigin = 'anonymous';
     img.src = scratchImageUrl;
     img.onload = () => {
-      ctx.fillStyle = ctx.createPattern(img, 'repeat') || '#FFD700';
+      const pattern = ctx.createPattern(img, 'repeat');
+      if (pattern) {
+        ctx.fillStyle = pattern;
+      } else {
+        ctx.fillStyle = '#FFD700'; // Fallback gold color
+      }
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.globalCompositeOperation = 'destination-out';
     };
@@ -114,24 +119,23 @@ export const ScratchCard = () => {
 
   const handleInteractionStart = (e: React.MouseEvent | React.TouchEvent) => {
     isDrawing.current = true;
-    scratch(e); // Scratch a little on the first touch/click
+    scratch(e);
   };
-
+  
   const stopScratching = () => {
-    if (isDrawing.current) {
-      isDrawing.current = false;
-      checkReveal(); // Final check when user stops scratching
-    }
+    isDrawing.current = false;
   };
 
   const scratch = (e: React.MouseEvent | React.TouchEvent) => {
-    if (isRevealed) return;
+    if (isRevealed || !isDrawing.current) return;
+    
+    e.preventDefault();
+
     const canvas = canvasRef.current;
     const container = containerRef.current;
     const ctx = canvas?.getContext('2d', { willReadFrequently: true });
     if (!ctx || !container) return;
 
-    e.preventDefault();
 
     const { x, y } = getCoords(e);
     ctx.beginPath();
@@ -165,6 +169,7 @@ export const ScratchCard = () => {
     
     if (percentage > 80) {
       setIsRevealed(true);
+      setScratchProgress(100);
     }
   };
   
@@ -205,19 +210,20 @@ export const ScratchCard = () => {
       
       {!isRevealed && (
         <div className="w-full max-w-xs px-4">
-          <Progress value={scratchProgress} className="w-full h-2 [&>div]:bg-amber-400" />
+          <Progress value={scratchProgress} className="w-full h-2 [&>div]:bg-primary" />
+          <p className='text-xs text-muted-foreground mt-2'>Raspe para revelar</p>
         </div>
       )}
 
       {isRevealed && (
-        <div className="w-full max-w-sm animate-fade-in text-center bg-card/80 p-6 rounded-lg shadow-lg border border-primary/20">
-          <Gift className="h-12 w-12 text-accent mx-auto mb-4 animate-pulse" />
+        <div className="w-full max-w-sm animate-fade-in text-center bg-card/80 p-6 rounded-lg shadow-lg border-primary/20">
+          <Gift className="h-12 w-12 text-primary mx-auto mb-4 animate-pulse" />
           <h3 className="font-headline text-2xl text-foreground mb-2">Prêmio Exclusivo!</h3>
           <p className="text-muted-foreground mb-4">Você ganhou acesso à nossa análise completa!</p>
           <Link href="https://example.com/page2" target="_blank" rel="noopener noreferrer">
             <Button
               size="lg"
-              className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-bold text-lg h-14 rounded-full shadow-lg shadow-accent/30 focus:shadow-accent/40 focus:ring-2 focus:ring-offset-2 focus:ring-accent"
+              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-lg h-14 rounded-full shadow-lg shadow-primary/30 focus:shadow-primary/40 focus:ring-2 focus:ring-offset-2 focus:ring-primary"
             >
               ACESSAR ANÁLISE COMPLETA
             </Button>

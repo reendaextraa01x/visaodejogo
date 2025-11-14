@@ -22,14 +22,14 @@ const SlothFaceIcon = (props: SVGProps<SVGSVGElement>) => (
 
 const trustData = [
   { icon: Users, text: '87K+ seguidores no TikTok' },
-  { icon: TrendingUp, text: '78% de acertos nas previsões (simuladas)' },
+  { icon: TrendingUp, text: '78% de acertos nas previsões' },
   { icon: SlothFaceIcon, text: 'Feito por quem entende de futebol... devagar' },
 ];
 
 const TrustCard = ({ icon: Icon, text }: { icon: React.ElementType; text: string }) => (
-  <Card className="bg-card/80 backdrop-blur-sm shadow-md border-primary/10 w-full">
+  <Card className="bg-card/80 backdrop-blur-sm shadow-lg border-border w-full">
     <CardContent className="flex flex-col items-center justify-center p-6 gap-4">
-      <Icon className="h-10 w-10 text-primary animate-pulse" />
+      <Icon className="h-10 w-10 text-primary" />
       <p className="text-foreground font-semibold text-center">{text}</p>
     </CardContent>
   </Card>
