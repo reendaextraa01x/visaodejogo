@@ -114,7 +114,7 @@ export const ScratchCard = () => {
 
   const handleInteractionStart = (e: React.MouseEvent | React.TouchEvent) => {
     isDrawing.current = true;
-    scratch(e);
+    // Don't scratch on start, only on move
   };
 
   const stopScratching = () => {
@@ -138,7 +138,8 @@ export const ScratchCard = () => {
     ctx.arc(x, y, 20, 0, Math.PI * 2, true);
     ctx.fill();
 
-    checkReveal();
+    // Only check reveal progress while scratching, not on every single event
+    // to avoid premature reveal. The final check happens in stopScratching.
 
     for (let i = 0; i < 3; i++) {
         createParticle(x, y, container);
@@ -169,6 +170,13 @@ export const ScratchCard = () => {
       setIsRevealed(true);
     }
   };
+  
+  const handleMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (isDrawing.current) {
+        scratch(e);
+        checkReveal(); // check reveal on move
+    }
+  }
 
   return (
     <div className="flex flex-col items-center gap-6 w-full">
@@ -192,8 +200,8 @@ export const ScratchCard = () => {
           onTouchStart={handleInteractionStart}
           onMouseUp={stopScratching}
           onTouchEnd={stopScratching}
-          onMouseMove={scratch}
-          onTouchMove={scratch}
+          onMouseMove={handleMove}
+          onTouchMove={handleMove}
           onMouseLeave={stopScratching}
         />
       </div>
