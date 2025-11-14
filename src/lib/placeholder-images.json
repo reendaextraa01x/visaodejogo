@@ -5,30 +5,6 @@
       "description": "Golden texture for scratchcard",
       "imageUrl": "https://images.unsplash.com/photo-1598289431512-b970a552d4c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxnb2xkZW4lMjB0ZXh0dXJlfGVufDB8fHx8MTc2NTk0MzYwN3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "gold texture"
-    },
-    {
-      "id": "tiktok-1",
-      "description": "TikTok video thumbnail 1",
-      "imageUrl": "https://images.unsplash.com/photo-1656847496791-1211205cbc76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmb290YmFsbCUyMHNsb3RofGVufDB8fHx8MTc2MzE0NDEzMXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "football sloth"
-    },
-    {
-      "id": "tiktok-2",
-      "description": "TikTok video thumbnail 2",
-      "imageUrl": "https://images.unsplash.com/photo-1708533144300-9a00b4cc29f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzb2NjZXIlMjBwcmVkaWN0aW9ufGVufDB8fHx8MTc2MzE0NDEzMXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "soccer prediction"
-    },
-    {
-      "id": "tiktok-3",
-      "description": "TikTok video thumbnail 3",
-      "imageUrl": "https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxmdW5ueSUyMGFuaW1hbHxlbnwwfHx8fDE3NjMxMTkzMTR8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "funny animal"
-    },
-    {
-      "id": "tiktok-4",
-      "description": "TikTok video thumbnail 4",
-      "imageUrl": "https://images.unsplash.com/photo-1651444911208-b47e02d08139?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Z2FtZSUyMGhpZ2hsaWdodHxlbnwwfHx8fDE3NjMxNDQxMzF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "game highlight"
     }
   ]
 }

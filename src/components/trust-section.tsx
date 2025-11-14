@@ -1,5 +1,4 @@
-import { Card, CardContent } from '@/components/ui/card';
-import { Users, TrendingUp } from 'lucide-react';
+import { Users, TrendingUp, Award } from 'lucide-react';
 import type { SVGProps } from 'react';
 
 const SlothFaceIcon = (props: SVGProps<SVGSVGElement>) => (
@@ -21,26 +20,28 @@ const SlothFaceIcon = (props: SVGProps<SVGSVGElement>) => (
   );
 
 const trustData = [
-  { icon: Users, text: '87K+ seguidores no TikTok' },
-  { icon: TrendingUp, text: '78% de acertos nas previsões' },
-  { icon: SlothFaceIcon, text: 'Feito por quem entende de futebol... devagar' },
+  { icon: Users, text: '+ de 87 mil seguidores' },
+  { icon: Award, text: 'Acima de 78% de acertos' },
+  { icon: SlothFaceIcon, text: 'A única preguiça vidente do Brasil' },
 ];
 
-const TrustCard = ({ icon: Icon, text }: { icon: React.ElementType; text: string }) => (
-  <Card className="bg-card/80 backdrop-blur-sm shadow-lg border-border w-full transition-all duration-300 hover:bg-card hover:shadow-primary/10">
-    <CardContent className="flex flex-col items-center justify-center p-6 gap-4">
-      <Icon className="h-10 w-10 text-primary" />
-      <p className="text-foreground font-semibold text-center">{text}</p>
-    </CardContent>
-  </Card>
+const TrustItem = ({ icon: Icon, text }: { icon: React.ElementType; text: string }) => (
+  <div className="flex items-center gap-4">
+    <Icon className="h-8 w-8 text-primary shrink-0" />
+    <p className="text-foreground text-lg">{text}</p>
+  </div>
 );
 
 export const TrustSection = () => (
   <section className="py-16">
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {trustData.map((item, index) => (
-        <TrustCard key={index} icon={item.icon} text={item.text} />
-      ))}
+    <div className="bg-card/50 border border-border rounded-xl p-8 backdrop-blur-sm">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-border/50">
+            {trustData.map((item, index) => (
+                <div key={index} className="flex justify-center items-center p-4 first:pt-0 md:first:pt-4 last:pb-0 md:last:pb-4">
+                    <TrustItem icon={item.icon} text={item.text} />
+                </div>
+            ))}
+        </div>
     </div>
   </section>
 );

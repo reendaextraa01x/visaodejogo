@@ -29,20 +29,18 @@ export const Testimonials = () => {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {testimonials.map((testimonial, index) => (
-                    <Card key={index} className="bg-card border-border text-left shadow-lg transition-all duration-300 hover:border-primary/80 hover:shadow-xl hover:-translate-y-1">
-                        <CardContent className="p-6">
+                    <Card key={index} className="bg-transparent border-0 shadow-none text-center">
+                        <CardContent className="p-6 flex flex-col items-center">
+                             <Avatar className="w-20 h-20 border-4 border-primary/50 mb-4">
+                                <AvatarFallback className="text-2xl bg-card">{testimonial.avatar}</AvatarFallback>
+                            </Avatar>
                             <div className="flex mb-3">
                                 {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className="h-4 w-4 text-primary fill-primary" />
+                                    <Star key={i} className="h-5 w-5 text-primary fill-primary" />
                                 ))}
                             </div>
-                            <p className="text-foreground mb-4">"{testimonial.text}"</p>
-                            <div className="flex items-center gap-3 mt-4">
-                                <Avatar className="border-2 border-primary/50">
-                                    <AvatarFallback>{testimonial.avatar}</AvatarFallback>
-                                </Avatar>
-                                <span className="font-bold text-sm">{testimonial.name}</span>
-                            </div>
+                            <p className="text-foreground italic mb-4">"{testimonial.text}"</p>
+                            <span className="font-bold text-sm text-muted-foreground tracking-wider uppercase">{testimonial.name}</span>
                         </CardContent>
                     </Card>
                 ))}

@@ -2,7 +2,6 @@ import { Header } from '@/components/header';
 import { Hero } from '@/components/hero';
 import { HowItWorks } from '@/components/how-it-works';
 import { TrustSection } from '@/components/trust-section';
-import { TiktokSection } from '@/components/tiktok-section';
 import { MobileCta } from '@/components/mobile-cta';
 import { BenefitsSection } from '@/components/benefits-section';
 import { Testimonials } from '@/components/testimonials';
@@ -22,7 +21,6 @@ export default function Home() {
         <BenefitsSection />
         <Separator className="my-12 md:my-20 bg-gradient-to-r from-transparent via-border to-transparent h-[1px]" />
         <Testimonials />
-        <TiktokSection />
         <FinalCta />
       </main>
       <MobileCta />
