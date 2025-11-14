@@ -1,9 +1,8 @@
 'use client';
 
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import * as Tone from 'tone';
 import Link from 'next/link';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
@@ -19,6 +18,42 @@ const scratchImageUrl =
   PlaceHolderImages.find((p) => p.id === 'gold-scratch')?.imageUrl ||
   'https://picsum.photos/seed/gold/300/300';
 
+const createParticle = (x: number, y: number, container: HTMLElement) => {
+  const particle = document.createElement('div');
+  particle.className = 'absolute rounded-full bg-yellow-400/80';
+  const size = Math.random() * 4 + 1;
+  particle.style.width = `${size}px`;
+  particle.style.height = `${size}px`;
+  particle.style.left = `${x}px`;
+  particle.style.top = `${y}px`;
+  particle.style.pointerEvents = 'none';
+  particle.style.opacity = `${Math.random() * 0.7 + 0.3}`;
+
+  container.appendChild(particle);
+
+  const angle = Math.random() * Math.PI * 2;
+  const velocity = Math.random() * 2 + 1;
+  const gravity = 0.1;
+  let vx = Math.cos(angle) * velocity;
+  let vy = Math.sin(angle) * velocity;
+
+  const animation = () => {
+    vx *= 0.98;
+    vy += gravity;
+    particle.style.left = `${parseFloat(particle.style.left) + vx}px`;
+    particle.style.top = `${parseFloat(particle.style.top) + vy}px`;
+    particle.style.opacity = `${parseFloat(particle.style.opacity) - 0.015}`;
+
+    if (parseFloat(particle.style.opacity) > 0) {
+      requestAnimationFrame(animation);
+    } else {
+      particle.remove();
+    }
+  };
+
+  requestAnimationFrame(animation);
+};
+
 export const ScratchCard = () => {
   const [prediction, setPrediction] = useState('');
   const [isRevealed, setIsRevealed] = useState(false);
@@ -28,16 +63,6 @@ export const ScratchCard = () => {
 
   useEffect(() => {
     setPrediction(predictions[Math.floor(Math.random() * predictions.length)]);
-  }, []);
-
-  const noiseSynth = useMemo(() => {
-    if (typeof window !== 'undefined') {
-      return new Tone.NoiseSynth({
-        noise: { type: 'brown' },
-        envelope: { attack: 0.005, decay: 0.05, sustain: 0.01 },
-      }).toDestination();
-    }
-    return null;
   }, []);
 
   const setupCanvas = () => {
@@ -84,10 +109,7 @@ export const ScratchCard = () => {
     };
   };
 
-  const handleInteractionStart = async (e: React.MouseEvent | React.TouchEvent) => {
-    if (Tone.context.state !== 'running') {
-      await Tone.start();
-    }
+  const handleInteractionStart = (e: React.MouseEvent | React.TouchEvent) => {
     isDrawing.current = true;
     scratch(e);
   };
@@ -102,16 +124,18 @@ export const ScratchCard = () => {
   const scratch = (e: React.MouseEvent | React.TouchEvent) => {
     if (!isDrawing.current || isRevealed) return;
     const canvas = canvasRef.current;
+    const container = containerRef.current;
     const ctx = canvas?.getContext('2d', { willReadFrequently: true });
-    if (!ctx) return;
+    if (!ctx || !container) return;
 
     const { x, y } = getCoords(e);
     ctx.beginPath();
     ctx.arc(x, y, 20, 0, Math.PI * 2, true);
     ctx.fill();
 
-    if (noiseSynth && Tone.context.state === 'running') {
-      noiseSynth.triggerAttackRelease('8n');
+    // Create particles
+    for (let i = 0; i < 3; i++) {
+        createParticle(x, y, container);
     }
   };
 
@@ -143,6 +167,9 @@ export const ScratchCard = () => {
       <div
         ref={containerRef}
         className="relative w-full max-w-[300px] aspect-square rounded-full overflow-hidden shadow-2xl bg-[#1a1a1a]"
+        style={{
+          backgroundImage: 'radial-gradient(circle at 70% 30%, #fff8, transparent 40%), radial-gradient(circle at 30% 70%, #f0e68c88, transparent 40%)',
+        }}
       >
         <div className="absolute inset-0 flex items-center justify-center text-primary-foreground font-headline text-3xl p-4">
           {prediction}
