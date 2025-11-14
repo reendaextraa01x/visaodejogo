@@ -1,30 +1,30 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { BarChart, Trophy, ShieldCheck } from "lucide-react";
+import { BarChart, Trophy, ShieldCheck, Star } from "lucide-react";
 
 const benefits = [
   {
-    icon: BarChart,
-    title: "Análise Completa",
-    description: "Receba estatísticas detalhadas e a análise profunda da nossa preguiça especialista.",
+    icon: Star,
+    title: "Prêmios Instantâneos",
+    description: "Raspe e descubra na hora o que você ganhou. Sem espera, sem complicação.",
   },
   {
     icon: Trophy,
-    title: "Palpites Exclusivos",
-    description: "Tenha acesso aos palpites e previsões que não são postados em nenhum outro lugar.",
+    title: "Altas Chances de Ganhar",
+    description: "Nossas raspadinhas são calibradas pela preguiça para dar os melhores resultados.",
   },
   {
     icon: ShieldCheck,
-    title: "Conteúdo Confiável",
-    description: "Nossas visões são geradas com um método (quase) científico de pura intuição preguiçosa.",
+    title: "Seguro e Divertido",
+    description: "Uma forma animada de testar sua sorte no futebol, com a garantia da nossa vidente.",
   },
 ];
 
 export const BenefitsSection = () => {
   return (
     <section className="py-12 md:py-20">
-      <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-2">O que você ganha?</h2>
+      <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-2">Por que nossa raspadinha é melhor?</h2>
       <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
-        Ao acessar a Visão Exclusiva, você destrava um universo de informações privilegiadas.
+        Mais chances, mais prêmios, mais diversão. Simples assim.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {benefits.map((benefit, index) => (

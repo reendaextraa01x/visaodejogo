@@ -30,18 +30,18 @@ const SlothWithBallIcon = (props: SVGProps<SVGSVGElement>) => (
 
 
 const predictions = [
-  "Gol aos 90'!",
-  'Virada histórica!',
-  'Empate com emoção!',
-  'Craque inspirado!',
-  'Zebra à vista!',
+  "Prêmio: R$100!",
+  'Você ganhou 50% extra!',
+  'Bônus de Aposta!',
+  'Rodada Grátis!',
+  'Prêmio Acumulado!',
 ];
 
 const PlayerCardFront = () => (
     <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800 to-black rounded-2xl shadow-2xl p-4 flex flex-col justify-center items-center backface-hidden border-2 border-primary/20">
         <div className="absolute inset-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgSCAwIFYgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iaHNsYSgyMjgsIDksIDE1LCgwLjIpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
         <SlothWithBallIcon className="w-24 h-24 text-primary drop-shadow-[0_5px_15px_rgba(234,179,8,0.4)] opacity-50" />
-        <p className="font-headline text-2xl text-white mt-4">CLIQUE PARA REVELAR</p>
+        <p className="font-headline text-2xl text-white mt-4">CLIQUE PARA RASPAR</p>
     </div>
 );
 
@@ -50,11 +50,11 @@ const PlayerCardBack = ({ prediction }: { prediction: string }) => (
         <div className="flex justify-between items-start">
             <div className="text-left">
                 <p className="font-headline text-3xl text-black">99</p>
-                <p className="font-body text-xs font-bold text-black/80 -mt-1">VIS</p>
+                <p className="font-body text-xs font-bold text-black/80 -mt-1">SOR</p>
             </div>
             <div className="flex flex-col items-center">
                 <SlothWithBallIcon className="w-16 h-16 text-black/80" />
-                <p className="font-headline text-lg text-black -mt-2">O VIDENTE</p>
+                <p className="font-headline text-lg text-black -mt-2">RASPADINHA</p>
             </div>
             <div className="text-right">
                 <p className="font-headline text-3xl text-black">BR</p>
@@ -67,12 +67,12 @@ const PlayerCardBack = ({ prediction }: { prediction: string }) => (
         </div>
 
         <div className="grid grid-cols-3 gap-2 text-center text-black">
-            <div><p className="font-headline text-2xl">1</p><p className="text-xs font-bold -mt-1">RIT</p></div>
-            <div><p className="font-headline text-2xl">85</p><p className="text-xs font-bold -mt-1">DRB</p></div>
-            <div><p className="font-headline text-2xl">20</p><p className="text-xs font-bold -mt-1">DEF</p></div>
-            <div><p className="font-headline text-2xl">99</p><p className="text-xs font-bold -mt-1">PAS</p></div>
-            <div><p className="font-headline text-2xl">70</p><p className="text-xs font-bold -mt-1">FIN</p></div>
-            <div><p className="font-headline text-2xl">95</p><p className="text-xs font-bold -mt-1">FÍS</p></div>
+            <div><p className="font-headline text-2xl">99</p><p className="text-xs font-bold -mt-1">SORTE</p></div>
+            <div><p className="font-headline text-2xl">85</p><p className="text-xs font-bold -mt-1">PRÊMIO</p></div>
+            <div><p className="font-headline text-2xl">70</p><p className="text-xs font-bold -mt-1">FÁCIL</p></div>
+            <div><p className="font-headline text-2xl">99</p><p className="text-xs font-bold -mt-1">RÁPIDO</p></div>
+            <div><p className="font-headline text-2xl">70</p><p className="text-xs font-bold -mt-1">LUCRO</p></div>
+            <div><p className="font-headline text-2xl">95</p><p className="text-xs font-bold -mt-1">FÁCIL</p></div>
         </div>
     </div>
 );
@@ -81,21 +81,46 @@ const PlayerCardBack = ({ prediction }: { prediction: string }) => (
 export const VisionCard = () => {
   const [prediction, setPrediction] = useState('');
   const [isRevealed, setIsRevealed] = useState(false);
+  const isRevealing = React.useRef(false);
+  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     setPrediction(predictions[Math.floor(Math.random() * predictions.length)]);
+    
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    }
   }, []);
 
   const handleReveal = () => {
-    if (isRevealed) return;
+    if (isRevealing.current || isRevealed) return;
+
+    isRevealing.current = true;
     setIsRevealed(true);
+
+    // Prevent re-triggering while animation is playing
+    timeoutRef.current = setTimeout(() => {
+        isRevealing.current = false;
+    }, 700); // Duration of the flip animation
   };
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    handleReveal();
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    handleReveal();
+  };
+
 
   return (
     <div className="flex flex-col items-center gap-6 w-full max-w-md">
         <div 
             className="w-[300px] h-[420px] perspective-1000 group"
-            onClick={handleReveal}
+            onMouseDown={handleMouseDown}
+            onTouchStart={handleTouchStart}
         >
             <div 
                 className={cn(
@@ -112,15 +137,15 @@ export const VisionCard = () => {
       {isRevealed && (
         <div className="w-full max-w-sm animate-fade-in text-center bg-card/80 p-6 rounded-lg shadow-lg border-primary/20 mt-4">
           <Gift className="h-12 w-12 text-primary mx-auto mb-4 animate-pulse" />
-          <h3 className="font-headline text-2xl text-foreground mb-2">Prêmio Exclusivo!</h3>
-          <p className="text-muted-foreground mb-4">Você ganhou acesso à nossa análise completa!</p>
+          <h3 className="font-headline text-2xl text-foreground mb-2">Você ganhou um prêmio!</h3>
+          <p className="text-muted-foreground mb-4">Clique no botão abaixo para resgatar sua recompensa agora mesmo.</p>
           <Link href="https://example.com/page2" target="_blank" rel="noopener noreferrer">
             <Button
               size="lg"
               className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-lg h-14 rounded-full shadow-lg shadow-primary/30 focus:shadow-primary/40 focus:ring-2 focus:ring-offset-2 focus:ring-primary"
             >
               <Sparkles className="mr-2 h-5 w-5" />
-              ACESSAR ANÁLISE COMPLETA
+              RESGATAR MEU PRÊMIO
             </Button>
           </Link>
         </div>

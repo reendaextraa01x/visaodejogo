@@ -3,8 +3,8 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Visão de Jogo | Raspadinha de Futebol com Preguiça',
-  description: 'Raspe a preguiça e veja as previsões exclusivas do jogo de hoje!',
+  title: 'Visão de Jogo | Raspadinha Premiada de Futebol',
+  description: 'Raspe, ganhe e fature com as previsões certeiras da nossa preguiça vidente!',
 };
 
 export default function RootLayout({

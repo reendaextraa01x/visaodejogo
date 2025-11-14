@@ -3,27 +3,27 @@ import { Eye, BrainCircuit, Sparkles } from "lucide-react";
 const steps = [
   {
     icon: BrainCircuit,
-    title: "1. Concentração",
-    description: "Nossa preguiça entra em estado de meditação profunda, focada no universo futebolístico.",
-  },
-  {
-    icon: Eye,
-    title: "2. A Visão",
-    description: "Em um flash de genialidade, ela visualiza os momentos cruciais da partida.",
+    title: "1. A Preguiça Concentra",
+    description: "Nossa preguiça canaliza sua energia mística para prever os resultados mais quentes.",
   },
   {
     icon: Sparkles,
-    title: "3. A Revelação",
-    description: "A visão é selada misticamente, aguardando para ser revelada por você.",
+    title: "2. O Prêmio é Selado",
+    description: "A previsão vira um prêmio escondido em uma raspadinha dourada, esperando por você.",
+  },
+  {
+    icon: Eye,
+    title: "3. Raspe e Ganhe",
+    description: "Você revela a previsão premiada. É simples, rápido e pode encher seu bolso!",
   },
 ];
 
 export const HowItWorks = () => {
   return (
     <section className="py-12 md:py-20 text-center">
-      <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-2">Como a magia acontece?</h2>
+      <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-2">Como ganhar é fácil?</h2>
       <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
-        Nosso processo é lento, metódico e (quase) infalível.
+        Nosso processo é simples, rápido e feito para você lucrar.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
         {steps.map((step, index) => (

@@ -6,26 +6,26 @@ const testimonials = [
     {
         name: "Júnior F.",
         avatar: "JF",
-        text: "A preguiça me salvou na aposta do fim de semana! Achei que era brincadeira, mas o bicho é um gênio.",
+        text: "A preguiça me deu o prêmio do fim de semana! Achei que era só um jogo, mas o palpite valeu ouro.",
     },
     {
         name: "Carla S.",
         avatar: "CS",
-        text: "Nunca mais duvido da Visão de Jogo. A análise que recebi foi mais completa que a de muito comentarista por aí.",
+        text: "Nunca mais duvido da Visão de Jogo. Raspei e ganhei! Foi mais fácil do que eu imaginava.",
     },
     {
         name: "Marcos P.",
         avatar: "MP",
-        text: "Finalmente um jeito divertido de acompanhar futebol. A raspadinha é genial e os palpites são certeiros!",
+        text: "Finalmente um jeito divertido de ganhar com futebol. A raspadinha é genial e os prêmios são de verdade!",
     },
 ]
 
 export const Testimonials = () => {
     return (
         <section className="py-12 md:py-20">
-            <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-2">Quem confia, se dá bem</h2>
+            <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-2">Quem já raspou, lucrou!</h2>
             <p className="text-lg text-muted-foreground mb-12">
-                Veja o que nossos seguidores estão dizendo.
+                Veja o que nossos ganhadores estão dizendo.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {testimonials.map((testimonial, index) => (
