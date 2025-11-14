@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { ShieldCheck, Star, Gem } from "lucide-react";
 
 const benefits = [
@@ -26,16 +26,22 @@ export const BenefitsSection = () => {
       <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
         Mais chances, mais prêmios, mais diversão. Simples assim.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 perspective-1000">
         {benefits.map((benefit, index) => (
-          <Card key={index} className="bg-card text-left border-border shadow-lg transition-all duration-300 hover:border-primary hover:shadow-primary/20 hover:-translate-y-2 group">
-            <CardContent className="p-8">
+          <Card 
+            key={index} 
+            className="bg-card text-left border-transparent shadow-lg transition-all duration-300 group p-px"
+            style={{
+              background: 'linear-gradient(135deg, hsl(var(--border)), transparent, transparent)',
+            }}
+          >
+            <div className="bg-card p-8 rounded-[7px] h-full transition-transform duration-300 hover:-translate-y-2 hover:rotate-x-6">
               <div className="mb-6">
                   <benefit.icon className="h-12 w-12 text-primary transition-transform duration-300 group-hover:scale-110" />
               </div>
               <h3 className="text-xl font-bold text-foreground mb-2">{benefit.title}</h3>
               <p className="text-muted-foreground">{benefit.description}</p>
-            </CardContent>
+            </div>
           </Card>
         ))}
       </div>

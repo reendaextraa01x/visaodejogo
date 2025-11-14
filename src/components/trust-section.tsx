@@ -1,4 +1,4 @@
-import { Users, TrendingUp, Award } from 'lucide-react';
+import { Users, Award } from 'lucide-react';
 import type { SVGProps } from 'react';
 
 const SlothFaceIcon = (props: SVGProps<SVGSVGElement>) => (
@@ -26,22 +26,18 @@ const trustData = [
 ];
 
 const TrustItem = ({ icon: Icon, text }: { icon: React.ElementType; text: string }) => (
-  <div className="flex items-center gap-4">
-    <Icon className="h-8 w-8 text-primary shrink-0" />
-    <p className="text-foreground text-lg">{text}</p>
+  <div className="flex flex-col items-center gap-3 text-center transition-transform duration-300 hover:scale-110">
+    <Icon className="h-12 w-12 text-primary drop-shadow-[0_4px_10px_hsl(var(--primary-foreground)_/_0.3)]" />
+    <p className="text-foreground text-lg font-semibold">{text}</p>
   </div>
 );
 
 export const TrustSection = () => (
   <section className="py-16">
-    <div className="bg-card/50 border border-border rounded-xl p-8 backdrop-blur-sm">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-border/50">
-            {trustData.map((item, index) => (
-                <div key={index} className="flex justify-center items-center p-4 first:pt-0 md:first:pt-4 last:pb-0 md:last:pb-4">
-                    <TrustItem icon={item.icon} text={item.text} />
-                </div>
-            ))}
-        </div>
+    <div className="mx-auto grid max-w-5xl grid-cols-1 items-center justify-items-center gap-12 md:grid-cols-3">
+      {trustData.map((item, index) => (
+        <TrustItem key={index} icon={item.icon} text={item.text} />
+      ))}
     </div>
   </section>
 );

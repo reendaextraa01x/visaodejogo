@@ -118,9 +118,28 @@ export default {
         'ping-slow': 'ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite',
         'pulse-strong': 'pulse-strong 1.5s ease-in-out infinite',
       },
+      rotate: {
+        'x-6': '6deg',
+      }
     },
   },
   plugins: [
     require('tailwindcss-animate'),
+    plugin(function({ addUtilities }) {
+      addUtilities({
+        '.perspective-1000': {
+          perspective: '1000px',
+        },
+        '.preserve-3d': {
+          'transform-style': 'preserve-3d',
+        },
+        '.backface-hidden': {
+          'backface-visibility': 'hidden',
+        },
+        '.rotate-y-180': {
+          transform: 'rotateY(180deg)',
+        },
+      })
+    })
   ],
 } satisfies Config;
