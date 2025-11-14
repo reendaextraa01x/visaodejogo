@@ -23,15 +23,15 @@ export const BenefitsSection = () => {
   return (
     <section className="py-12 md:py-20">
       <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-2">O que você ganha?</h2>
-      <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+      <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
         Ao acessar a Visão Exclusiva, você destrava um universo de informações privilegiadas.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {benefits.map((benefit, index) => (
-          <Card key={index} className="bg-card text-center border-border shadow-lg transition-all hover:border-primary hover:shadow-primary/20 hover:-translate-y-1">
+          <Card key={index} className="bg-card text-center border-border shadow-lg transition-all duration-300 hover:border-primary hover:shadow-primary/20 hover:-translate-y-2">
             <CardContent className="p-8">
-              <div className="flex justify-center mb-4">
-                <div className="p-4 bg-primary/10 rounded-full">
+              <div className="flex justify-center mb-6">
+                <div className="p-4 bg-primary/10 rounded-full border border-primary/20">
                   <benefit.icon className="h-8 w-8 text-primary" />
                 </div>
               </div>

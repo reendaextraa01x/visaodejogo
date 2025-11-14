@@ -16,11 +16,11 @@ export default function Home() {
       <main className="container mx-auto max-w-4xl px-4 pt-28 pb-36 text-center">
         <Hero />
         <TrustSection />
-        <Separator className="my-12 md:my-20 bg-border/20" />
+        <Separator className="my-12 md:my-20 bg-gradient-to-r from-transparent via-border to-transparent h-[1px]" />
         <HowItWorks />
-        <Separator className="my-12 md:my-20 bg-border/20" />
+        <Separator className="my-12 md:my-20 bg-gradient-to-r from-transparent via-border to-transparent h-[1px]" />
         <BenefitsSection />
-        <Separator className="my-12 md:my-20 bg-border/20" />
+        <Separator className="my-12 md:my-20 bg-gradient-to-r from-transparent via-border to-transparent h-[1px]" />
         <Testimonials />
         <TiktokSection />
         <FinalCta />

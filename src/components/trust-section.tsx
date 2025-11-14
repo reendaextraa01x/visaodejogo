@@ -27,7 +27,7 @@ const trustData = [
 ];
 
 const TrustCard = ({ icon: Icon, text }: { icon: React.ElementType; text: string }) => (
-  <Card className="bg-card/80 backdrop-blur-sm shadow-lg border-border w-full">
+  <Card className="bg-card/80 backdrop-blur-sm shadow-lg border-border w-full transition-all duration-300 hover:bg-card hover:shadow-primary/10">
     <CardContent className="flex flex-col items-center justify-center p-6 gap-4">
       <Icon className="h-10 w-10 text-primary" />
       <p className="text-foreground font-semibold text-center">{text}</p>

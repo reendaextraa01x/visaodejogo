@@ -99,11 +99,23 @@ export default {
             from: { opacity: '0', transform: 'translateY(10px)' },
             to: { opacity: '1', transform: 'translateY(0)' },
         },
+        'ping-slow': {
+          '75%, 100%': {
+            transform: 'scale(1.5)',
+            opacity: '0',
+          },
+        },
+        'pulse-strong': {
+            '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+            '50%': { transform: 'scale(1.05)', opacity: '0.7' },
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-in': 'fade-in 0.5s ease-out forwards',
+        'ping-slow': 'ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'pulse-strong': 'pulse-strong 1.5s ease-in-out infinite',
       },
     },
   },

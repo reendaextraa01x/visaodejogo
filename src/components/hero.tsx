@@ -1,13 +1,13 @@
-import { ScratchCard } from '@/components/scratch-card';
+import { VisionCard } from '@/components/vision-card';
 
 export const Hero = () => (
   <section className="py-12 flex flex-col items-center">
-    <h2 className="font-headline text-5xl md:text-7xl text-foreground mb-4 max-w-2xl">
-      Raspe a preguiça e descubra o que ela viu no jogo!
+    <h2 className="font-headline text-5xl md:text-7xl text-foreground mb-4 max-w-3xl">
+      A preguiça previu o futuro do jogo. Você tem coragem de ver?
     </h2>
-    <p className="text-lg text-muted-foreground mb-8">
+    <p className="text-xl text-muted-foreground mb-12">
       A única vidente do futebol que acerta no seu próprio ritmo.
     </p>
-    <ScratchCard />
+    <VisionCard />
   </section>
 );
