@@ -114,18 +114,18 @@ export const ScratchCard = () => {
 
   const handleInteractionStart = (e: React.MouseEvent | React.TouchEvent) => {
     isDrawing.current = true;
-    // Don't scratch on start, only on move
+    scratch(e); // Scratch a little on the first touch/click
   };
 
   const stopScratching = () => {
     if (isDrawing.current) {
       isDrawing.current = false;
-      checkReveal();
+      checkReveal(); // Final check when user stops scratching
     }
   };
 
   const scratch = (e: React.MouseEvent | React.TouchEvent) => {
-    if (!isDrawing.current || isRevealed) return;
+    if (isRevealed) return;
     const canvas = canvasRef.current;
     const container = containerRef.current;
     const ctx = canvas?.getContext('2d', { willReadFrequently: true });
@@ -137,9 +137,6 @@ export const ScratchCard = () => {
     ctx.beginPath();
     ctx.arc(x, y, 20, 0, Math.PI * 2, true);
     ctx.fill();
-
-    // Only check reveal progress while scratching, not on every single event
-    // to avoid premature reveal. The final check happens in stopScratching.
 
     for (let i = 0; i < 3; i++) {
         createParticle(x, y, container);
