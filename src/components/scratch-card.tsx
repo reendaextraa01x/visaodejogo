@@ -199,7 +199,7 @@ export const ScratchCard = () => {
       </div>
       
       {!isRevealed && (
-        <div className="w-full max-w-xs">
+        <div className="w-full max-w-xs px-4">
           <Progress value={scratchProgress} className="w-full h-2 [&>div]:bg-amber-400" />
         </div>
       )}
