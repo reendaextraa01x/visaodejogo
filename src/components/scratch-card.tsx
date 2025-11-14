@@ -166,12 +166,12 @@ export const ScratchCard = () => {
     <div className="flex flex-col items-center gap-6 w-full">
       <div
         ref={containerRef}
-        className="relative w-full max-w-[300px] aspect-square rounded-full overflow-hidden shadow-2xl bg-[#1a1a1a]"
+        className="relative w-full max-w-[300px] aspect-square rounded-full overflow-hidden shadow-2xl bg-gradient-to-br from-yellow-300 via-yellow-500 to-amber-600"
         style={{
-          backgroundImage: 'radial-gradient(circle at 70% 30%, #fff8, transparent 40%), radial-gradient(circle at 30% 70%, #f0e68c88, transparent 40%)',
+          backgroundImage: 'radial-gradient(circle at 70% 30%, #fff8, transparent 40%), radial-gradient(circle at 30% 70%, #f0e68c88, transparent 40%), linear-gradient(to bottom right, #fde047, #eab308)',
         }}
       >
-        <div className="absolute inset-0 flex items-center justify-center text-primary-foreground font-headline text-3xl p-4">
+        <div className="absolute inset-0 flex items-center justify-center text-black font-headline text-3xl p-4">
           {prediction}
         </div>
         <canvas
