@@ -16,8 +16,8 @@ const predictions = [
 ];
 
 const scratchImageUrl =
-  PlaceHolderImages.find((p) => p.id === 'football-scratch')?.imageUrl ||
-  'https://picsum.photos/seed/football/300/300';
+  PlaceHolderImages.find((p) => p.id === 'gold-scratch')?.imageUrl ||
+  'https://picsum.photos/seed/gold/300/300';
 
 export const ScratchCard = () => {
   const [prediction, setPrediction] = useState('');
@@ -56,7 +56,7 @@ export const ScratchCard = () => {
     img.crossOrigin = 'anonymous';
     img.src = scratchImageUrl;
     img.onload = () => {
-      ctx.fillStyle = ctx.createPattern(img, 'repeat') || 'grey';
+      ctx.fillStyle = ctx.createPattern(img, 'repeat') || '#FFD700';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.globalCompositeOperation = 'destination-out';
     };
@@ -133,7 +133,7 @@ export const ScratchCard = () => {
     }
 
     const percentage = (transparentPixels / (canvas.width * canvas.height)) * 100;
-    if (percentage > 60) {
+    if (percentage > 70) {
       setIsRevealed(true);
     }
   };
@@ -142,7 +142,7 @@ export const ScratchCard = () => {
     <div className="flex flex-col items-center gap-6 w-full">
       <div
         ref={containerRef}
-        className="relative w-full max-w-[300px] aspect-square rounded-full overflow-hidden shadow-2xl bg-primary"
+        className="relative w-full max-w-[300px] aspect-square rounded-full overflow-hidden shadow-2xl bg-[#1a1a1a]"
       >
         <div className="absolute inset-0 flex items-center justify-center text-primary-foreground font-headline text-3xl p-4">
           {prediction}

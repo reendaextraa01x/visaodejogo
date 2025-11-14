@@ -1,10 +1,10 @@
 {
   "placeholderImages": [
     {
-      "id": "football-scratch",
-      "description": "Football texture for scratchcard",
-      "imageUrl": "https://images.unsplash.com/photo-1599832903145-b8b5bc46c4e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmb290YmFsbCUyMHRleHR1cmV8ZW58MHx8fHwxNzYzMTQ0MTMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "football texture"
+      "id": "gold-scratch",
+      "description": "Golden texture for scratchcard",
+      "imageUrl": "https://images.unsplash.com/photo-1598289431512-b970a552d4c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxnb2xkZW4lMjB0ZXh0dXJlfGVufDB8fHx8MTc2NTk0MzYwN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "gold texture"
     },
     {
       "id": "tiktok-1",
