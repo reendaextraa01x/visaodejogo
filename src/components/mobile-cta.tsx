@@ -1,0 +1,12 @@
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+
+export const MobileCta = () => (
+  <div className="fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background via-background/90 to-transparent z-40 md:hidden">
+    <Link href="https://example.com/page2" target="_blank" rel="noopener noreferrer" className="w-full">
+      <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-bold text-lg h-14 rounded-full shadow-lg shadow-accent/30 focus:shadow-accent/40 focus:ring-2 focus:ring-offset-2 focus:ring-accent">
+        ACESSAR A VISÃO EXCLUSIVA
+      </Button>
+    </Link>
+  </div>
+);
