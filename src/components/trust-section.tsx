@@ -1,3 +1,4 @@
+
 import { Users, Award } from 'lucide-react';
 import type { SVGProps } from 'react';
 
@@ -34,7 +35,7 @@ const TrustItem = ({ icon: Icon, text }: { icon: React.ElementType; text: string
 
 export const TrustSection = () => (
   <section className="py-16 relative">
-    <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,transparent,black,transparent)]"></div>
+    <div className="absolute inset-0 bg-radial-gradient(ellipse_at_center,rgba(var(--primary),0.1),transparent_50%) [mask-image:linear-gradient(180deg,transparent,black,transparent)]"></div>
     <div className="relative mx-auto grid max-w-5xl grid-cols-1 items-center justify-items-center gap-12 md:grid-cols-3">
       {trustData.map((item, index) => (
         <TrustItem key={index} icon={item.icon} text={item.text} />
