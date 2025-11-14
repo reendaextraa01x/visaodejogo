@@ -1,16 +1,12 @@
+
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import { Gift, Sparkles } from 'lucide-react';
-import { Progress } from '@/components/ui/progress';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Sparkles, BarChart, BrainCircuit, Eye, Dribbble, Shield } from 'lucide-react';
 import type { SVGProps } from 'react';
-
-// Tone.js for audio
-import * as Tone from 'tone';
 
 const SlothWithBallIcon = (props: SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -35,221 +31,92 @@ const SlothWithBallIcon = (props: SVGProps<SVGSVGElement>) => (
 
 
 const predictions = [
-  "Prêmio: R$500!",
-  'Você ganhou um iPhone 15!',
-  'Bônus de R$1000 em Apostas!',
-  'Uma Viagem para a Final!',
-  'Prêmio Máximo Acumulado!',
+    "Prêmio: R$500!",
+    'Você ganhou um iPhone 15!',
+    'Bônus de R$1000 em Apostas!',
+    'Uma Viagem para a Final!',
+    'Prêmio Máximo Acumulado!',
 ];
 
-const PrizeRevealCard = ({ prediction }: { prediction: string }) => (
-    <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-primary/80 via-primary to-yellow-300 rounded-2xl shadow-2xl p-4 flex flex-col justify-center items-center text-center border-2 border-amber-300">
-        <Sparkles className="w-16 h-16 text-black/80 animate-pulse-strong" />
-        <p className="font-headline text-4xl lg:text-5xl text-black drop-shadow-sm mt-4">{prediction}</p>
+const Stat = ({ icon: Icon, label, value }: { icon: React.ElementType, label: string, value: string | number }) => (
+    <div className="flex items-center gap-2">
+        <Icon className="w-4 h-4 text-primary" />
+        <span className="font-bold text-lg">{value}</span>
+        <span className="text-sm text-muted-foreground">{label}</span>
     </div>
 );
 
-// Gold particle component for the animation
-const GoldParticle = ({ x, y }: { x: number, y: number }) => {
-    const style = {
-      left: `${x}px`,
-      top: `${y}px`,
-      width: `${Math.random() * 5 + 2}px`,
-      height: `${Math.random() * 5 + 2}px`,
-      animationDuration: `${Math.random() * 1 + 0.5}s`,
-    };
-    return <div className="gold-particle" style={style}></div>;
-};
 
 export const VisionCard = () => {
     const [prediction, setPrediction] = useState('');
+    const [isFlipped, setIsFlipped] = useState(false);
     const [isRevealed, setIsRevealed] = useState(false);
-    const [scratchProgress, setScratchProgress] = useState(0);
-    const [particles, setParticles] = useState<{ id: number; x: number; y: number }[]>([]);
 
-    const canvasRef = useRef<HTMLCanvasElement>(null);
-    const isDrawing = useRef(false);
-    const revealThreshold = 80; // 80% scratched to auto-reveal
-
-    // --- Audio Refs ---
-    const scratchPlayer = useRef<Tone.Player | null>(null);
-    const winPlayer = useRef<Tone.Player | null>(null);
-    const audioInitialized = useRef(false);
-
-    const goldTextureUrl = PlaceHolderImages.find(p => p.id === 'gold-scratch')?.imageUrl || '';
-
-    // --- Audio Initialization ---
-    const initAudio = async () => {
-        if (audioInitialized.current || typeof window === 'undefined') return;
-        try {
-            await Tone.start();
-            scratchPlayer.current = new Tone.Player({
-                url: "https://cdn.pixabay.com/audio/2022/03/15/audio_17316a70a8.mp3",
-                loop: false,
-            }).toDestination();
-            winPlayer.current = new Tone.Player({
-                url: "https://cdn.pixabay.com/audio/2022/11/22/audio_758525e989.mp3",
-                loop: false,
-            }).toDestination();
-             await Tone.loaded();
-            audioInitialized.current = true;
-            console.log("Audio initialized");
-        } catch (error) {
-            console.error("Failed to initialize audio:", error);
-        }
-    };
-    
-    // --- Canvas Setup ---
     useEffect(() => {
         setPrediction(predictions[Math.floor(Math.random() * predictions.length)]);
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
-    
-        const image = new Image();
-        image.crossOrigin = "anonymous";
-        image.src = goldTextureUrl;
-        image.onload = () => {
-            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-            ctx.globalCompositeOperation = 'destination-out';
-        };
-      }, [goldTextureUrl]);
+    }, []);
 
-    // --- Scratching Logic ---
-    const getCoords = (e: React.MouseEvent | React.TouchEvent) => {
-        const canvas = canvasRef.current;
-        if (!canvas) return { x: 0, y: 0 };
-        const rect = canvas.getBoundingClientRect();
-        if ('touches' in e.nativeEvent) {
-            return { x: e.nativeEvent.touches[0].clientX - rect.left, y: e.nativeEvent.touches[0].clientY - rect.top };
-        }
-        return { x: e.nativeEvent.clientX - rect.left, y: e.nativeEvent.clientY - rect.top };
-    }
-
-    const startScratching = (e: React.MouseEvent | React.TouchEvent) => {
-        if (isRevealed) return;
-        initAudio(); // Initialize audio on first user interaction
-        isDrawing.current = true;
-        scratchAt(e);
-    };
-
-    const stopScratching = () => {
-        isDrawing.current = false;
-        if (scratchPlayer.current?.state === 'started') {
-            scratchPlayer.current?.stop();
-        }
-    };
-
-    const scratchAt = (e: React.MouseEvent | React.TouchEvent) => {
-        if (!isDrawing.current || isRevealed) return;
-        
-        if (scratchPlayer.current?.state !== 'started') {
-            scratchPlayer.current?.start();
-        }
-
-        const canvas = canvasRef.current;
-        const ctx = canvas?.getContext('2d');
-        if (!ctx || !canvas) return;
-
-        const { x, y } = getCoords(e);
-        
-        ctx.beginPath();
-        ctx.arc(x, y, 30, 0, 2 * Math.PI, false);
-        ctx.fill();
-
-        // Create particles
-        const newParticle = { id: Date.now() + Math.random(), x, y };
-        setParticles(prev => [...prev.slice(-20), newParticle]);
-        setTimeout(() => setParticles(prev => prev.filter(p => p.id !== newParticle.id)), 1000);
-
-        updateScratchProgress();
-    };
-
-    const updateScratchProgress = useCallback(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
-      
-        const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        const totalPixels = pixels.width * pixels.height;
-        let transparentPixels = 0;
-      
-        // Iterate over the pixels (alpha channel is at every 4th position)
-        for (let i = 3; i < pixels.data.length; i += 4) {
-          if (pixels.data[i] === 0) {
-            transparentPixels++;
-          }
-        }
-      
-        const progress = (transparentPixels / totalPixels) * 100;
-        setScratchProgress(progress);
-      
-        if (progress >= revealThreshold && !isRevealed) {
-          revealAll();
-        }
-    }, [isRevealed]);
-
-    const revealAll = () => {
-        setIsRevealed(true);
-        winPlayer.current?.start();
-        const canvas = canvasRef.current;
-        const ctx = canvas?.getContext('2d');
-        if (ctx) {
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-        }
+    const handleFlip = () => {
+        if (isFlipped) return;
+        setIsFlipped(true);
+        setTimeout(() => setIsRevealed(true), 600);
     };
 
     return (
-        <div className="flex flex-col items-center gap-4 w-full max-w-sm md:max-w-md">
+        <div className="flex flex-col items-center gap-6 w-full max-w-sm md:max-w-md">
             <div 
-                className="w-[300px] h-[420px] relative cursor-pointer"
+                className="w-[320px] h-[450px] perspective-1000"
+                onClick={handleFlip}
             >
-                {/* The prize that is underneath */}
-                <PrizeRevealCard prediction={prediction} />
-
-                {/* The scratchable canvas on top */}
-                <canvas
-                    ref={canvasRef}
-                    width="300"
-                    height="420"
+                <div
                     className={cn(
-                        "absolute top-0 left-0 rounded-2xl transition-opacity duration-1000",
-                        isRevealed ? "opacity-0" : "opacity-100"
+                        "relative w-full h-full preserve-3d transition-transform duration-1000",
+                        isFlipped ? 'rotate-y-180' : ''
                     )}
-                    onMouseDown={startScratching}
-                    onMouseMove={scratchAt}
-                    onMouseUp={stopScratching}
-                    onMouseLeave={stopScratching}
-                    onTouchStart={startScratching}
-                    onTouchMove={scratchAt}
-                    onTouchEnd={stopScratching}
-                />
-                 {/* Falling particles container */}
-                <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-2xl">
-                    {particles.map(p => <GoldParticle key={p.id} x={p.x} y={p.y} />)}
+                >
+                    {/* Card Front */}
+                    <div className="absolute w-full h-full backface-hidden overflow-hidden rounded-2xl bg-gradient-to-br from-card to-background border-2 border-primary/20 shadow-2xl flex flex-col items-center justify-center p-8 cursor-pointer group">
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                         <SlothWithBallIcon className="w-40 h-40 text-primary opacity-20 group-hover:opacity-30 transition-opacity" />
+                         <h3 className="font-headline text-3xl text-foreground drop-shadow-lg mt-4 z-10">Toque para Revelar</h3>
+                         <p className="text-muted-foreground z-10">A visão da preguiça aguarda...</p>
+                    </div>
+
+                    {/* Card Back */}
+                    <div className="absolute w-full h-full backface-hidden rotate-y-180 overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-card to-background border-2 border-primary shadow-2xl flex flex-col justify-between p-6">
+                        <div className="text-center">
+                            <SlothWithBallIcon className="w-20 h-20 mx-auto text-primary" />
+                            <h3 className="font-headline text-2xl text-primary mt-2">PREGUIÇA VIDENTE</h3>
+                            <p className="font-bold text-foreground">VISÃO DE JOGO</p>
+                        </div>
+                        
+                        <div className="space-y-3">
+                            <Stat icon={BarChart} label="RITMO" value={1} />
+                            <Stat icon={Dribbble} label="Drible" value={12} />
+                            <Stat icon={Shield} label="Defesa" value={30} />
+                            <Stat icon={BrainCircuit} label="Passe" value={85} />
+                            <Stat icon={Eye} label="VISÃO" value={99} />
+                        </div>
+
+                        <div className="text-center bg-black/30 p-2 rounded-lg border-t-2 border-primary/50">
+                            <p className="text-muted-foreground text-xs">PREVISÃO</p>
+                            <p className="font-bold text-lg text-foreground">{prediction}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            {/* Progress Bar and CTA */}
-            <div className={cn("w-full max-w-sm transition-opacity duration-500", isRevealed ? 'opacity-0' : 'opacity-100')}>
-                <p className="text-center text-muted-foreground text-sm mb-2">Raspe para revelar seu prêmio!</p>
-                <Progress value={scratchProgress} className="w-full h-3 bg-card" />
-            </div>
-
             {isRevealed && (
-                <div className="w-full max-w-sm animate-fade-in text-center bg-card/80 p-6 rounded-lg shadow-lg border-primary/20 mt-4">
-                    <Gift className="h-12 w-12 text-primary mx-auto mb-4 animate-ping-slow" />
-                    <h3 className="font-headline text-2xl text-foreground mb-2">Você ganhou um prêmio!</h3>
-                    <p className="text-muted-foreground mb-4">Clique no botão abaixo para resgatar sua recompensa agora mesmo.</p>
+                <div className="w-full max-w-sm animate-fade-in text-center bg-card/80 p-6 rounded-lg shadow-lg border-primary/20">
+                    <h3 className="font-headline text-2xl text-foreground mb-2">A Sorte foi Lançada!</h3>
+                    <p className="text-muted-foreground mb-4">Sua raspadinha premiada está pronta. Resgate agora e veja se você ganhou!</p>
                     <Link href="https://example.com/page2" target="_blank" rel="noopener noreferrer">
                         <Button
                             size="lg"
                             className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-lg h-14 rounded-full shadow-lg shadow-primary/30 focus:shadow-primary/40 focus:ring-2 focus:ring-offset-2 focus:ring-primary animate-pulse-strong"
                         >
                             <Sparkles className="mr-2 h-5 w-5" />
-                            RESGATAR MEU PRÊMIO
+                            PEGAR MINHA RASPADINHA
                         </Button>
                     </Link>
                 </div>
