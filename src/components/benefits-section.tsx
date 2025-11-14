@@ -26,18 +26,17 @@ export const BenefitsSection = () => {
       <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
         Mais chances, mais prêmios, mais diversão. Simples assim.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 perspective-1000">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {benefits.map((benefit, index) => (
           <Card 
             key={index} 
-            className="bg-card text-left border-transparent shadow-lg transition-all duration-300 group p-px"
-            style={{
-              background: 'linear-gradient(135deg, hsl(var(--border)), transparent, transparent)',
-            }}
+            className="bg-card/50 text-left border-border/50 backdrop-blur-sm shadow-lg transition-all duration-300 hover:border-primary/50 hover:shadow-primary/20 group p-px"
           >
-            <div className="bg-card p-8 rounded-[7px] h-full transition-transform duration-300 hover:-translate-y-2 hover:rotate-x-6">
+            <div className="p-8 rounded-[7px] h-full transition-transform duration-300 hover:-translate-y-2">
               <div className="mb-6">
-                  <benefit.icon className="h-12 w-12 text-primary transition-transform duration-300 group-hover:scale-110" />
+                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center border-2 border-primary/20 group-hover:border-primary transition-colors">
+                    <benefit.icon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-110" />
+                  </div>
               </div>
               <h3 className="text-xl font-bold text-foreground mb-2">{benefit.title}</h3>
               <p className="text-muted-foreground">{benefit.description}</p>

@@ -29,13 +29,6 @@ const SlothWithBallIcon = (props: SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
-const predictions = [
-    "Prêmio: R$100!",
-    'Você ganhou um iPhone 15!',
-    'Bônus de R$1000 em Apostas!',
-    'Uma Viagem para a Final!',
-    'Prêmio Máximo Acumulado!',
-];
 
 const Stat = ({ icon: Icon, label, value }: { icon: React.ElementType, label: string, value: string | number }) => (
     <div className="flex items-center gap-2">
@@ -52,8 +45,9 @@ export const VisionCard = () => {
     const [isRevealed, setIsRevealed] = useState(false);
 
     useEffect(() => {
-        // Set the prize to R$100 specifically
-        setPrediction("Prêmio: R$100!");
+        if (typeof window !== 'undefined') {
+            setPrediction("Prêmio: R$100!");
+        }
     }, []);
 
     const handleFlip = () => {
@@ -65,7 +59,7 @@ export const VisionCard = () => {
     return (
         <div className="flex flex-col items-center gap-6 w-full max-w-sm md:max-w-md">
             <div 
-                className="w-[320px] h-[450px] perspective-1000"
+                className="w-[320px] h-[450px] perspective-1000 cursor-pointer group"
                 onClick={handleFlip}
             >
                 <div
@@ -75,9 +69,9 @@ export const VisionCard = () => {
                     )}
                 >
                     {/* Card Front */}
-                    <div className="absolute w-full h-full backface-hidden overflow-hidden rounded-2xl bg-gradient-to-br from-card to-background border-2 border-primary/20 shadow-2xl flex flex-col items-center justify-center p-8 cursor-pointer group">
+                    <div className="absolute w-full h-full backface-hidden overflow-hidden rounded-2xl bg-gradient-to-br from-card to-background border-2 border-primary/20 shadow-2xl flex flex-col items-center justify-center p-8">
                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                         <Ticket className="w-40 h-40 text-primary opacity-20 group-hover:opacity-30 transition-opacity" />
+                         <Ticket className="w-40 h-40 text-primary opacity-20 group-hover:opacity-30 group-hover:scale-110 transition-all duration-300" />
                          <h3 className="font-headline text-3xl text-foreground drop-shadow-lg mt-4 z-10">Toque para Revelar</h3>
                          <p className="text-muted-foreground z-10">Sua raspadinha da sorte aguarda...</p>
                     </div>
@@ -107,7 +101,7 @@ export const VisionCard = () => {
             </div>
 
             {isRevealed && (
-                <div className="w-full max-w-sm animate-fade-in text-center bg-card/80 p-6 rounded-lg shadow-lg border-primary/20">
+                <div className="w-full max-w-sm animate-fade-in text-center bg-card/80 backdrop-blur-sm p-6 rounded-lg shadow-lg border border-primary/20">
                     <h3 className="font-headline text-2xl text-foreground mb-2">A Sorte foi Lançada!</h3>
                     <p className="text-muted-foreground mb-4">Sua raspadinha premiada está pronta. Resgate agora e veja se você ganhou!</p>
                     <Link href="https://example.com/page2" target="_blank" rel="noopener noreferrer">

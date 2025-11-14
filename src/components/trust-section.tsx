@@ -27,14 +27,15 @@ const trustData = [
 
 const TrustItem = ({ icon: Icon, text }: { icon: React.ElementType; text: string }) => (
   <div className="flex flex-col items-center gap-3 text-center transition-transform duration-300 hover:scale-110">
-    <Icon className="h-12 w-12 text-primary drop-shadow-[0_4px_10px_hsl(var(--primary-foreground)_/_0.3)]" />
+    <Icon className="h-12 w-12 text-primary drop-shadow-[0_4px_10px_hsl(var(--primary)_/_0.3)]" />
     <p className="text-foreground text-lg font-semibold">{text}</p>
   </div>
 );
 
 export const TrustSection = () => (
-  <section className="py-16">
-    <div className="mx-auto grid max-w-5xl grid-cols-1 items-center justify-items-center gap-12 md:grid-cols-3">
+  <section className="py-16 relative">
+    <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,transparent,black,transparent)]"></div>
+    <div className="relative mx-auto grid max-w-5xl grid-cols-1 items-center justify-items-center gap-12 md:grid-cols-3">
       {trustData.map((item, index) => (
         <TrustItem key={index} icon={item.icon} text={item.text} />
       ))}

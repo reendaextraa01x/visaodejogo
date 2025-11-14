@@ -15,17 +15,19 @@ const Countdown = () => {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            setTimeLeft(prevTime => {
-                if (prevTime.minutes === 0 && prevTime.seconds === 0) {
-                    return { minutes: 0, seconds: 0 };
-                }
+            if (typeof window !== 'undefined') {
+                setTimeLeft(prevTime => {
+                    if (prevTime.minutes === 0 && prevTime.seconds === 0) {
+                        return { minutes: 0, seconds: 0 };
+                    }
 
-                if (prevTime.seconds === 0) {
-                    return { minutes: prevTime.minutes - 1, seconds: 59 };
-                }
+                    if (prevTime.seconds === 0) {
+                        return { minutes: prevTime.minutes - 1, seconds: 59 };
+                    }
 
-                return { ...prevTime, seconds: prevTime.seconds - 1 };
-            });
+                    return { ...prevTime, seconds: prevTime.seconds - 1 };
+                });
+            }
         }, 1000);
 
         return () => clearTimeout(timer);
@@ -42,9 +44,9 @@ const Countdown = () => {
 export const FinalCta = () => {
     return (
         <section className="hidden md:block py-20">
-            <div className="bg-card border border-border rounded-xl p-12 flex flex-col items-center shadow-2xl relative overflow-hidden">
-                <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full filter blur-3xl"></div>
-                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/10 rounded-full filter blur-3xl"></div>
+            <div className="bg-card/50 border border-border/50 backdrop-blur-sm rounded-xl p-12 flex flex-col items-center shadow-2xl relative overflow-hidden">
+                <div className="absolute -top-20 -left-20 w-60 h-60 bg-primary/20 rounded-full filter blur-3xl animate-pulse"></div>
+                <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-primary/20 rounded-full filter blur-3xl animate-pulse animation-delay-2000"></div>
                 
                 <Countdown />
                 

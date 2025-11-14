@@ -10,9 +10,12 @@ import { Separator } from '@/components/ui/separator';
 
 export default function Home() {
   return (
-    <div className="bg-background min-h-screen w-full">
+    <div className="bg-background min-h-screen w-full overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-background via-background to-black/50 z-0"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full filter blur-[150px]"></div>
+      
       <Header />
-      <main className="container mx-auto max-w-4xl px-4 pt-28 pb-36 text-center">
+      <main className="relative z-10 container mx-auto max-w-4xl px-4 pt-28 pb-36 text-center">
         <Hero />
         <TrustSection />
         <Separator className="my-12 md:my-20 bg-gradient-to-r from-transparent via-border to-transparent h-[1px]" />

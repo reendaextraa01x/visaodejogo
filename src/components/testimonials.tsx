@@ -29,27 +29,21 @@ export const Testimonials = () => {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {testimonials.map((testimonial, index) => (
-                    <div key={index} className="flex flex-col items-center text-center group">
-                        <div className="relative w-full">
-                           <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-24 bg-primary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                            <Card className="bg-transparent border-0 shadow-none relative">
-                                <CardContent className="p-6 flex flex-col items-center">
-                                    <Avatar className="w-20 h-20 border-4 border-primary/50 mb-4 transition-transform duration-300 group-hover:scale-110">
-                                        <AvatarFallback className="text-2xl bg-card">{testimonial.avatar}</AvatarFallback>
-                                    </Avatar>
-                                    <div className="flex mb-3">
-                                        {[...Array(5)].map((_, i) => (
-                                            <Star key={i} className="h-5 w-5 text-primary fill-primary" />
-                                        ))}
-                                    </div>
-                                    <p className="text-foreground italic mb-4">"{testimonial.text}"</p>
-                                    <span className="font-bold text-sm text-muted-foreground tracking-wider uppercase">{testimonial.name}</span>
-                                </CardContent>
-                            </Card>
-                        </div>
-                        <div className="h-1.5 w-24 bg-card rounded-full mt-2 shadow-inner" />
-                        <div className="h-1.5 w-48 bg-card/60 rounded-full mt-1 shadow-inner" />
-                    </div>
+                    <Card key={index} className="bg-transparent border-none shadow-none group">
+                        <CardContent className="p-6 flex flex-col items-center text-center relative bg-card/30 rounded-lg border border-border/20 backdrop-blur-sm shadow-xl hover:shadow-primary/20 transition-shadow duration-300">
+                             <div className="absolute top-0 left-0 w-full h-full rounded-lg bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <Avatar className="relative z-10 w-20 h-20 border-4 border-primary/50 mb-4 transition-transform duration-300 group-hover:scale-110">
+                                <AvatarFallback className="text-2xl bg-card">{testimonial.avatar}</AvatarFallback>
+                            </Avatar>
+                            <div className="relative z-10 flex mb-3">
+                                {[...Array(5)].map((_, i) => (
+                                    <Star key={i} className="h-5 w-5 text-primary fill-primary" />
+                                ))}
+                            </div>
+                            <p className="relative z-10 text-foreground italic mb-4">"{testimonial.text}"</p>
+                            <span className="relative z-10 font-bold text-sm text-muted-foreground tracking-wider uppercase">{testimonial.name}</span>
+                        </CardContent>
+                    </Card>
                 ))}
             </div>
         </section>
