@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Progress } from '@/components/ui/progress';
+import { Gift } from 'lucide-react';
 
 const predictions = [
   "Gol aos 90'!",
@@ -57,6 +59,7 @@ const createParticle = (x: number, y: number, container: HTMLElement) => {
 export const ScratchCard = () => {
   const [prediction, setPrediction] = useState('');
   const [isRevealed, setIsRevealed] = useState(false);
+  const [scratchProgress, setScratchProgress] = useState(0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isDrawing = useRef(false);
@@ -128,12 +131,15 @@ export const ScratchCard = () => {
     const ctx = canvas?.getContext('2d', { willReadFrequently: true });
     if (!ctx || !container) return;
 
+    e.preventDefault();
+
     const { x, y } = getCoords(e);
     ctx.beginPath();
     ctx.arc(x, y, 20, 0, Math.PI * 2, true);
     ctx.fill();
 
-    // Create particles
+    checkReveal();
+
     for (let i = 0; i < 3; i++) {
         createParticle(x, y, container);
     }
@@ -156,8 +162,10 @@ export const ScratchCard = () => {
       }
     }
 
-    const percentage = (transparentPixels / (canvas.width * canvas.height)) * 100;
-    if (percentage > 70) {
+    const percentage = Math.min(100, (transparentPixels / (canvas.width * canvas.height)) * 100);
+    setScratchProgress(percentage);
+    
+    if (percentage > 80) {
       setIsRevealed(true);
     }
   };
@@ -189,14 +197,24 @@ export const ScratchCard = () => {
           onMouseLeave={stopScratching}
         />
       </div>
+      
+      {!isRevealed && (
+        <div className="w-full max-w-xs">
+          <Progress value={scratchProgress} className="w-full h-2 [&>div]:bg-amber-400" />
+        </div>
+      )}
+
       {isRevealed && (
-        <div className="w-full max-w-xs animate-fade-in">
+        <div className="w-full max-w-sm animate-fade-in text-center bg-card/80 p-6 rounded-lg shadow-lg border border-primary/20">
+          <Gift className="h-12 w-12 text-accent mx-auto mb-4 animate-pulse" />
+          <h3 className="font-headline text-2xl text-foreground mb-2">Prêmio Exclusivo!</h3>
+          <p className="text-muted-foreground mb-4">Você ganhou acesso à nossa análise completa!</p>
           <Link href="https://example.com/page2" target="_blank" rel="noopener noreferrer">
             <Button
               size="lg"
               className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-bold text-lg h-14 rounded-full shadow-lg shadow-accent/30 focus:shadow-accent/40 focus:ring-2 focus:ring-offset-2 focus:ring-accent"
             >
-              QUERO A VISÃO EXCLUSIVA
+              ACESSAR ANÁLISE COMPLETA
             </Button>
           </Link>
         </div>
