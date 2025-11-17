@@ -12,9 +12,9 @@ import { useCardRevealStore } from '@/store/card-reveal-store';
 
 const Stat = ({ icon: Icon, label, value }: { icon: React.ElementType, label: string, value: string | number }) => (
     <div className="flex items-center gap-2">
-        <Icon className="w-5 h-5 text-primary" />
-        <span className="font-bold text-xl md:text-2xl">{value}</span>
-        <span className="text-base text-muted-foreground">{label}</span>
+        <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+        <span className="font-bold text-lg sm:text-xl md:text-2xl">{value}</span>
+        <span className="text-sm sm:text-base text-muted-foreground">{label}</span>
     </div>
 );
 
@@ -23,7 +23,6 @@ export const VisionCard = () => {
     const [prediction, setPrediction] = useState('');
     const [isFlipped, setIsFlipped] = useState(false);
     
-    // Usando o estado global
     const { isRevealed, setRevealed } = useCardRevealStore();
 
     useEffect(() => {
@@ -60,7 +59,19 @@ export const VisionCard = () => {
                         {/* Card Front */}
                         <div className="absolute w-full h-full backface-hidden overflow-hidden rounded-2xl bg-gradient-to-br from-card to-background border-2 border-primary/20 shadow-2xl flex flex-col items-center justify-center p-8">
                              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                             <svg className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 text-primary opacity-20 group-hover:opacity-30 group-hover:scale-110 transition-all duration-300 animate-blink" width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s5.333-8 10-8 10 8 10 8-5.333 8-10 8-10-8-10-8Z"/><path d="M5 12s2.667-4 7-4 7 4 7 4-2.667 4-7 4-7-4-7-4Z"/><path d="M12 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></svg>
+                             <svg className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 text-primary opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500 animate-blink" viewBox="0 0 100 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <radialGradient id="irisGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                                    <stop offset="0%" style={{stopColor: 'hsl(var(--primary))', stopOpacity:1}} />
+                                    <stop offset="70%" style={{stopColor: 'hsl(var(--primary))', stopOpacity:0.9}} />
+                                    <stop offset="100%" style={{stopColor: 'hsl(var(--card))', stopOpacity:1}} />
+                                    </radialGradient>
+                                </defs>
+                                <path d="M2 35C2 35 22 2 50 2C78 2 98 35 98 35C98 35 78 68 50 68C22 68 2 35 2 35Z" stroke="hsl(var(--primary))" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round"/>
+                                <circle cx="50" cy="35" r="22" fill="url(#irisGradient)" />
+                                <circle cx="50" cy="35" r="10" fill="black"/>
+                                <circle cx="55" cy="30" r="3" fill="white" fillOpacity="0.7"/>
+                            </svg>
                              <h3 className="font-headline text-2xl sm:text-3xl text-foreground drop-shadow-lg mt-4">Toque para Revelar</h3>
                              <p className="text-muted-foreground text-sm sm:text-base">Sua raspadinha da sorte aguarda...</p>
                         </div>
@@ -70,11 +81,11 @@ export const VisionCard = () => {
                             <div className={cn("absolute top-0 left-[-100%] w-full h-full bg-shine-gradient transition-opacity", isRevealed ? "animate-shine opacity-100" : "opacity-0")}></div>
                             <div className="relative z-10 text-center">
                                 <Image src="https://i.imgur.com/4PoDYHJ.png" alt="Sloth with a crystal ball" width={64} height={64} className="w-12 h-12 md:w-16 md:h-16 mx-auto" />
-                                <h3 className="font-headline text-2xl md:text-3xl text-primary mt-2">PREGUIÇA VIDENTE</h3>
-                                <p className="font-bold text-foreground text-lg md:text-2xl">VISÃO DE JOGO</p>
+                                <h3 className="font-headline text-xl sm:text-2xl md:text-3xl text-primary mt-2">PREGUIÇA VIDENTE</h3>
+                                <p className="font-bold text-foreground text-lg sm:text-xl md:text-2xl">VISÃO DE JOGO</p>
                             </div>
                             
-                            <div className="relative z-10 space-y-3 md:space-y-4">
+                            <div className="relative z-10 space-y-2 sm:space-y-3 md:space-y-4">
                                 <Stat icon={BarChart} label="RITMO" value={82} />
                                 <Stat icon={Dribbble} label="Drible" value={88} />
                                 <Stat icon={Shield} label="Defesa" value={81} />
@@ -82,10 +93,10 @@ export const VisionCard = () => {
                                 <Stat icon={Eye} label="VISÃO" value={99} />
                             </div>
 
-                            <div className="relative z-10 text-center bg-black/30 p-3 rounded-lg border-t-2 border-primary/50">
-                                <p className="text-muted-foreground text-sm">PREVISÃO</p>
-                                <p className="font-bold text-2xl md:text-4xl text-foreground">{prediction}</p>
-                                <p className="text-sm text-primary/80 font-semibold mt-1">sorte de 89% aplicada</p>
+                            <div className="relative z-10 text-center bg-black/30 p-2 sm:p-3 rounded-lg border-t-2 border-primary/50">
+                                <p className="text-muted-foreground text-xs sm:text-sm">PREVISÃO</p>
+                                <p className="font-bold text-xl sm:text-2xl md:text-4xl text-foreground">{prediction}</p>
+                                <p className="text-xs sm:text-sm text-primary/80 font-semibold mt-1">sorte de 89% aplicada</p>
                             </div>
                         </div>
                     </div>
