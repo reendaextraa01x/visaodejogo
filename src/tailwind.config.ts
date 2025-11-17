@@ -18,8 +18,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['Inter', 'sans-serif'],
-        headline: ['Bebas Neue', 'sans-serif'],
+        body: ['var(--font-inter)', 'sans-serif'],
+        headline: ['var(--font-bebas-neue)', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
@@ -122,20 +122,25 @@ export default {
         },
         'shine': {
           '0%': { left: '-100%' },
-          '50%': { left: '100%' },
           '100%': { left: '100%' },
         },
-        'rotate-glow': {
-          '0%': {
-            transform: 'rotate(0deg)',
-          },
-          '100%': {
-            transform: 'rotate(360deg)',
-          }
+        'float': {
+            '0%': { transform: 'translateY(0px) rotateZ(0deg) rotateX(0deg)' },
+            '50%': { transform: 'translateY(-25px) rotateZ(10deg) rotateX(20deg)' },
+            '100%': { transform: 'translateY(0px) rotateZ(0deg) rotateX(0deg)' },
+        },
+        'float-reverse': {
+            '0%': { transform: 'translateY(0px) rotateZ(0deg) rotateX(0deg)' },
+            '50%': { transform: 'translateY(25px) rotateZ(-10deg) rotateX(-20deg)' },
+            '100%': { transform: 'translateY(0px) rotateZ(0deg) rotateX(0deg)' },
+        },
+        'blink': {
+            '0%, 95%, 100%': { transform: 'scaleY(1)' },
+            '97.5%': { transform: 'scaleY(0.1)' },
         }
       },
       backgroundImage: {
-        'shine-gradient': 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 25%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.2) 75%, rgba(255,255,255,0) 100%)',
+        'shine-gradient': 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 25%, rgba(255,255,0.4) 50%, rgba(255,255,255,0.2) 75%, rgba(255,255,255,0) 100%)',
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -145,8 +150,10 @@ export default {
         'pulse-strong': 'pulse-strong 1.5s ease-in-out infinite',
         'progress-bar': 'progress-bar linear forwards',
         'move-slow': 'move-slow 20s ease-in-out infinite alternate',
-        'shine': 'shine 1.2s ease-in-out',
-        'rotate-glow': 'rotate-glow 4s linear infinite',
+        'shine': 'shine 0.8s ease-in-out',
+        'float': 'float ease-in-out infinite',
+        'float-reverse': 'float-reverse ease-in-out infinite',
+        'blink': 'blink 15s ease-in-out infinite',
       },
       rotate: {
         'x-6': '6deg',

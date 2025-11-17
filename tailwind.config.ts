@@ -148,7 +148,7 @@ export default {
         'fade-in-up': 'fade-in-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
         'ping-slow': 'ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite',
         'pulse-strong': 'pulse-strong 1.5s ease-in-out infinite',
-        'progress-bar': 'progress-bar 5s linear forwards',
+        'progress-bar': 'progress-bar linear forwards',
         'move-slow': 'move-slow 20s ease-in-out infinite alternate',
         'shine': 'shine 0.8s ease-in-out',
         'float': 'float ease-in-out infinite',
