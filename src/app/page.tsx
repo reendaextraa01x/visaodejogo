@@ -21,8 +21,8 @@ export default function Home() {
        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-secondary/5 rounded-full filter blur-[100px] opacity-30 animate-move-slow animation-delay-4000"></div>
 
        {/* Vertical Branch SVG and Leaves */}
-       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-20 flex justify-center items-start pt-20">
-          <svg width="150" height="3000" viewBox="0 0 150 3000" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full">
+       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-20 flex justify-center items-start">
+          <svg width="150" height="100%" viewBox="0 0 150 3000" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full">
             <path d="M75.5 0V3000" stroke="#854d0e" strokeWidth="6"/>
             <path d="M125.5 80C100.5 90 80.5 130 85.5 150" stroke="#854d0e" strokeWidth="4"/>
             <path d="M75.5 300C95.5 310 115.5 340 105.5 360" stroke="#854d0e" strokeWidth="4"/>
