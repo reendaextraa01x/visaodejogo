@@ -144,6 +144,9 @@ to: {
         '.rotate-y-180': {
           transform: 'rotateY(180deg)',
         },
+        '.animation-delay-2000': {
+            'animation-delay': '2s',
+        }
       })
     })
   ],
