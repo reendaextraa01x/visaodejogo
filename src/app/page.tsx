@@ -7,7 +7,7 @@ import { MobileCta } from '@/components/mobile-cta';
 import { BenefitsSection } from '@/components/benefits-section';
 import { Testimonials } from '@/components/testimonials';
 import { FinalCta } from '@/components/final-cta';
-import { Separator } from '@/components/ui/separator';
+import { BranchSeparator } from '@/components/branch-separator';
 
 export default function Home() {
   return (
@@ -24,11 +24,11 @@ export default function Home() {
       <main className="relative z-10 container mx-auto max-w-4xl px-4 pt-28 pb-36 text-center">
         <Hero />
         <TrustSection />
-        <Separator className="my-12 md:my-20 bg-gradient-to-r from-transparent via-border to-transparent h-[1px]" />
+        <BranchSeparator />
         <HowItWorks />
-        <Separator className="my-12 md:my-20 bg-gradient-to-r from-transparent via-border to-transparent h-[1px]" />
+        <BranchSeparator />
         <BenefitsSection />
-        <Separator className="my-12 md:my-20 bg-gradient-to-r from-transparent via-border to-transparent h-[1px]" />
+        <BranchSeparator />
         <Testimonials />
         <FinalCta />
       </main>
