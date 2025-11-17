@@ -22,16 +22,17 @@ const testimonials = [
 
 export const Testimonials = () => {
     return (
-        <section className="py-12 md:py-20">
+        <section className="py-12 md:py-20 animate-fade-in-up animation-delay-600">
             <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-2">Quem já raspou, lucrou!</h2>
             <p className="text-lg text-muted-foreground mb-16">
                 Veja o que nossos ganhadores estão dizendo.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {testimonials.map((testimonial, index) => (
-                    <Card key={index} className="bg-transparent border-none shadow-none group">
-                        <CardContent className="p-6 flex flex-col items-center text-center relative bg-card/30 rounded-lg border border-border/20 backdrop-blur-sm shadow-xl hover:shadow-primary/20 transition-shadow duration-300">
+                    <Card key={index} className="bg-transparent border-none shadow-none group overflow-hidden">
+                        <CardContent className="p-6 flex flex-col items-center text-center relative bg-card/30 rounded-lg border border-border/20 backdrop-blur-sm shadow-xl hover:shadow-primary/20 transition-all duration-300 hover:border-primary/40">
                              <div className="absolute top-0 left-0 w-full h-full rounded-lg bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                             <div className="absolute top-0 left-[-100%] w-full h-full bg-shine-gradient opacity-0 group-hover:opacity-100 group-hover:animate-shine transition-opacity"></div>
                             <Avatar className="relative z-10 w-20 h-20 border-4 border-primary/50 mb-4 transition-transform duration-300 group-hover:scale-110">
                                 <AvatarFallback className="text-2xl bg-card">{testimonial.avatar}</AvatarFallback>
                             </Avatar>

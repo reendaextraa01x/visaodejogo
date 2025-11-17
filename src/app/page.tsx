@@ -15,9 +15,9 @@ export default function Home() {
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-background via-background to-black/50 z-0"></div>
       
       {/* Background glow elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full filter blur-[150px] opacity-50 animate-pulse"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/10 rounded-full filter blur-[150px] opacity-50 animate-pulse animation-delay-2000"></div>
-       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-secondary/5 rounded-full filter blur-[100px] opacity-30"></div>
+      <div className="absolute -top-40 -left-40 w-96 h-96 bg-primary/10 rounded-full filter blur-[150px] opacity-50 animate-move-slow"></div>
+      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-primary/10 rounded-full filter blur-[150px] opacity-50 animate-move-slow animation-delay-2000"></div>
+       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-secondary/5 rounded-full filter blur-[100px] opacity-30 animate-move-slow animation-delay-4000"></div>
 
       
       <Header />

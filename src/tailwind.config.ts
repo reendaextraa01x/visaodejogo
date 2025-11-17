@@ -92,13 +92,17 @@ export default {
           from: {
             height: 'var(--radix-accordion-content-height)',
           },
-to: {
+          to: {
             height: '0',
           },
         },
         'fade-in': {
             from: { opacity: '0', transform: 'translateY(10px)' },
             to: { opacity: '1', transform: 'translateY(0)' },
+        },
+        'fade-in-up': {
+          from: { opacity: '0', transform: 'translateY(20px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
         },
         'ping-slow': {
           '75%, 100%': {
@@ -113,15 +117,31 @@ to: {
         'progress-bar': {
             from: { transform: 'scaleY(0)' },
             to: { transform: 'scaleY(1)' },
+        },
+        'move-slow': {
+          '0%, 100%': { transform: 'translate(0, 0) rotate(0deg)' },
+          '25%': { transform: 'translate(20px, 40px) rotate(15deg)' },
+          '50%': { transform: 'translate(-20px, -30px) rotate(-10deg)' },
+          '75%': { transform: 'translate(30px, -10px) rotate(5deg)' },
+        },
+        'shine': {
+          '0%': { left: '-100%' },
+          '100%': { left: '100%' },
         }
+      },
+      backgroundImage: {
+        'shine-gradient': 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%)',
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-in': 'fade-in 0.5s ease-out forwards',
+        'fade-in-up': 'fade-in-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
         'ping-slow': 'ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite',
         'pulse-strong': 'pulse-strong 1.5s ease-in-out infinite',
         'progress-bar': 'progress-bar linear forwards',
+        'move-slow': 'move-slow 20s ease-in-out infinite alternate',
+        'shine': 'shine 1.5s ease-in-out',
       },
       rotate: {
         'x-6': '6deg',
@@ -144,9 +164,21 @@ to: {
         '.rotate-y-180': {
           transform: 'rotateY(180deg)',
         },
+        '.animation-delay-1000': {
+            'animation-delay': '1s',
+        },
         '.animation-delay-2000': {
             'animation-delay': '2s',
-        }
+        },
+        '.animation-delay-4000': {
+          'animation-delay': '4s',
+        },
+        '.animation-delay-400': {
+          'animation-delay': '400ms',
+        },
+        '.animation-delay-600': {
+          'animation-delay': '600ms',
+        },
       })
     })
   ],
