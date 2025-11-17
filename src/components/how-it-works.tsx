@@ -30,7 +30,7 @@ export const HowItWorks = () => {
             <div className="h-full w-full bg-primary/80 animate-progress-bar origin-top" style={{animation: 'progress-bar 5s linear forwards', animationTimeline: 'view(y)'}}></div>
         </div>
         {steps.map((step, index) => (
-          <div key={index} className="relative w-full flex flex-col items-center group animate-fade-in-up" style={{ animationDelay: `${index * 200}ms`}}>
+          <div key={index} className="relative w-full flex flex-col items-center group animate-fade-in-up" style={{ animationDelay: `${'\'\'\''}${index * 200}ms\'\'\'`}}>
             <div className="relative p-5 bg-card/80 backdrop-blur-sm rounded-full border-2 border-primary/20 z-10 group-hover:border-primary transition-all duration-300 shadow-lg group-hover:shadow-primary/20">
                 <div className="absolute -inset-2 bg-primary/10 rounded-full animate-ping-slow opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
                 <step.icon className="h-12 w-12 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6" />
