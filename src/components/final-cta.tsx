@@ -51,9 +51,9 @@ export const FinalCta = () => {
                 <Countdown />
                 
                 <Logo />
-                <h2 className="font-headline text-4xl md:text-5xl text-foreground mt-6 mb-2">Pronto para raspar e ganhar?</h2>
+                <h2 className="font-headline text-4xl md:text-5xl text-foreground mt-6 mb-2">Sua Última Chance de Mudar o Jogo. Vai Arriscar ou Vai Lucrar?</h2>
                 <p className="text-lg text-muted-foreground mb-8 max-w-xl">
-                    Não dependa da sorte. Confie na preguiça. Sua próxima raspadinha pode ser a premiada.
+                    A preguiça já fez a parte dela. Agora a decisão é sua. Sua próxima raspadinha pode ser a premiada.
                 </p>
                 <Link href="https://example.com/page2" target="_blank" rel="noopener noreferrer">
                     <Button

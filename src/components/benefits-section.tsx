@@ -22,9 +22,9 @@ const benefits = [
 export const BenefitsSection = () => {
   return (
     <section className="py-12 md:py-20 animate-fade-in-up animation-delay-400">
-      <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-2">Por que nossa raspadinha é melhor?</h2>
+      <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-2">A Vantagem que só a Preguiça Pode Oferecer</h2>
       <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
-        Mais chances, mais prêmios, mais diversão. Simples assim.
+        Isso não é sobre sorte. É sobre ter a informação privilegiada que te coloca à frente.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {benefits.map((benefit, index) => (

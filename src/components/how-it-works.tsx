@@ -21,9 +21,9 @@ const steps = [
 export const HowItWorks = () => {
   return (
     <section className="py-12 md:py-20 text-center animate-fade-in-up">
-      <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-2">Sua Sorte em 3 Passos Simples</h2>
+      <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-2">O Ritual da Premiação em 3 Etapas</h2>
       <p className="text-lg text-muted-foreground mb-16 max-w-2xl mx-auto">
-        Nosso processo é simples, rápido e feito para você lucrar.
+        Veja como a magia acontece, desde a previsão da nossa preguiça até o prêmio na sua mão.
       </p>
       <div className="relative flex flex-col items-center gap-12 md:gap-16">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 md:left-1/2 h-full w-0.5 bg-border/20">

@@ -23,9 +23,9 @@ const testimonials = [
 export const Testimonials = () => {
     return (
         <section className="py-12 md:py-20 animate-fade-in-up animation-delay-600">
-            <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-2">Quem já raspou, lucrou!</h2>
+            <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-2">Quem Já Raspou, Lucrou. E Eles Contam Como Foi.</h2>
             <p className="text-lg text-muted-foreground mb-16">
-                Veja o que nossos ganhadores estão dizendo.
+                A sorte favorece os que acreditam. Veja o que nossos ganhadores estão dizendo.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {testimonials.map((testimonial, index) => (
