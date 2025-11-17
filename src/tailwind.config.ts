@@ -128,6 +128,14 @@ export default {
         'shine': {
           '0%': { left: '-100%' },
           '100%': { left: '100%' },
+        },
+        'rotate-glow': {
+          '0%': {
+            transform: 'rotate(0deg)',
+          },
+          '100%': {
+            transform: 'rotate(360deg)',
+          }
         }
       },
       backgroundImage: {
@@ -143,6 +151,7 @@ export default {
         'progress-bar': 'progress-bar linear forwards',
         'move-slow': 'move-slow 20s ease-in-out infinite alternate',
         'shine': 'shine 1.5s ease-in-out',
+        'rotate-glow': 'rotate-glow 4s linear infinite',
       },
       rotate: {
         'x-6': '6deg',

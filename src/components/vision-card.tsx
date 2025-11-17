@@ -40,45 +40,53 @@ export const VisionCard = () => {
 
     return (
         <div className="flex flex-col items-center gap-6 w-full max-w-sm md:max-w-md">
-            <div 
-                className="w-[320px] h-[450px] perspective-1000 cursor-pointer group"
-                onClick={handleFlip}
-            >
+            <div className="relative group/card">
                 <div
                     className={cn(
-                        "relative w-full h-full preserve-3d transition-transform duration-1000",
-                        isFlipped ? 'rotate-y-180' : ''
+                        "absolute -inset-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-2xl blur-lg opacity-75 animate-rotate-glow group-hover/card:opacity-100 transition-opacity",
+                         isFlipped ? "animate-none opacity-50" : ""
                     )}
+                />
+                <div 
+                    className="relative w-[320px] h-[450px] perspective-1000 cursor-pointer group"
+                    onClick={handleFlip}
                 >
-                    {/* Card Front */}
-                    <div className="absolute w-full h-full backface-hidden overflow-hidden rounded-2xl bg-gradient-to-br from-card to-background border-2 border-primary/20 shadow-2xl flex flex-col items-center justify-center p-8">
-                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                         <Ticket className="w-40 h-40 text-primary opacity-20 group-hover:opacity-30 group-hover:scale-110 transition-all duration-300" />
-                         <h3 className="font-headline text-3xl text-foreground drop-shadow-lg mt-4 z-10">Toque para Revelar</h3>
-                         <p className="text-muted-foreground z-10">Sua raspadinha da sorte aguarda...</p>
-                    </div>
-
-                    {/* Card Back */}
-                    <div className="absolute w-full h-full backface-hidden rotate-y-180 overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-card to-background border-2 border-primary shadow-2xl flex flex-col justify-between p-6">
-                        <div className={cn("absolute top-0 left-[-100%] w-full h-full bg-shine-gradient transition-opacity", isRevealed ? "animate-shine opacity-100" : "opacity-0")}></div>
-                        <div className="text-center relative z-10">
-                            <Image src="https://i.imgur.com/4PoDYHJ.png" alt="Sloth with a crystal ball" width={80} height={80} className="w-20 h-20 mx-auto" />
-                            <h3 className="font-headline text-2xl text-primary mt-2">PREGUIÇA VIDENTE</h3>
-                            <p className="font-bold text-foreground">VISÃO DE JOGO</p>
-                        </div>
-                        
-                        <div className="space-y-3 relative z-10">
-                            <Stat icon={BarChart} label="RITMO" value={82} />
-                            <Stat icon={Dribbble} label="Drible" value={88} />
-                            <Stat icon={Shield} label="Defesa" value={81} />
-                            <Stat icon={BrainCircuit} label="Passe" value={92} />
-                            <Stat icon={Eye} label="VISÃO" value={99} />
+                    <div
+                        className={cn(
+                            "relative w-full h-full preserve-3d transition-transform duration-1000",
+                            isFlipped ? 'rotate-y-180' : ''
+                        )}
+                    >
+                        {/* Card Front */}
+                        <div className="absolute w-full h-full backface-hidden overflow-hidden rounded-2xl bg-gradient-to-br from-card to-background border-2 border-primary/20 shadow-2xl flex flex-col items-center justify-center p-8">
+                             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                             <Ticket className="w-40 h-40 text-primary opacity-20 group-hover:opacity-30 group-hover:scale-110 transition-all duration-300" />
+                             <h3 className="font-headline text-3xl text-foreground drop-shadow-lg mt-4 z-10">Toque para Revelar</h3>
+                             <p className="text-muted-foreground z-10">Sua raspadinha da sorte aguarda...</p>
                         </div>
 
-                        <div className="text-center bg-black/30 p-2 rounded-lg border-t-2 border-primary/50 relative z-10">
-                            <p className="text-muted-foreground text-xs">PREVISÃO</p>
-                            <p className="font-bold text-lg text-foreground">{prediction}</p>
-                            <p className="text-sm text-primary/80 font-semibold mt-1">sorte de 89% aplicada</p>
+                        {/* Card Back */}
+                        <div className="absolute w-full h-full backface-hidden rotate-y-180 overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-card to-background border-2 border-primary shadow-2xl flex flex-col justify-between p-6">
+                            <div className={cn("absolute top-0 left-[-100%] w-full h-full bg-shine-gradient transition-opacity", isRevealed ? "animate-shine opacity-100" : "opacity-0")}></div>
+                            <div className="text-center relative z-10">
+                                <Image src="https://i.imgur.com/4PoDYHJ.png" alt="Sloth with a crystal ball" width={80} height={80} className="w-20 h-20 mx-auto" />
+                                <h3 className="font-headline text-2xl text-primary mt-2">PREGUIÇA VIDENTE</h3>
+                                <p className="font-bold text-foreground">VISÃO DE JOGO</p>
+                            </div>
+                            
+                            <div className="space-y-3 relative z-10">
+                                <Stat icon={BarChart} label="RITMO" value={82} />
+                                <Stat icon={Dribbble} label="Drible" value={88} />
+                                <Stat icon={Shield} label="Defesa" value={81} />
+                                <Stat icon={BrainCircuit} label="Passe" value={92} />
+                                <Stat icon={Eye} label="VISÃO" value={99} />
+                            </div>
+
+                            <div className="text-center bg-black/30 p-2 rounded-lg border-t-2 border-primary/50 relative z-10">
+                                <p className="text-muted-foreground text-xs">PREVISÃO</p>
+                                <p className="font-bold text-lg text-foreground">{prediction}</p>
+                                <p className="text-sm text-primary/80 font-semibold mt-1">sorte de 89% aplicada</p>
+                            </div>
                         </div>
                     </div>
                 </div>
