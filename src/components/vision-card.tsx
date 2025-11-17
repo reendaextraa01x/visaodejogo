@@ -78,7 +78,7 @@ export const VisionCard = () => {
 
                     {/* Card Back */}
                     <div className="absolute w-full h-full backface-hidden rotate-y-180 overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-card to-background border-2 border-primary shadow-2xl flex flex-col justify-between p-6">
-                        <div className="absolute top-0 left-[-100%] w-full h-full bg-shine-gradient opacity-0 animate-shine animation-delay-1000"></div>
+                        <div className={cn("absolute top-0 left-[-100%] w-full h-full bg-shine-gradient transition-opacity", isRevealed ? "animate-shine opacity-100" : "opacity-0")}></div>
                         <div className="text-center relative z-10">
                             <SlothWithBallIcon className="w-20 h-20 mx-auto text-primary" />
                             <h3 className="font-headline text-2xl text-primary mt-2">PREGUIÇA VIDENTE</h3>
@@ -86,10 +86,10 @@ export const VisionCard = () => {
                         </div>
                         
                         <div className="space-y-3 relative z-10">
-                            <Stat icon={BarChart} label="RITMO" value={1} />
-                            <Stat icon={Dribbble} label="Drible" value={12} />
-                            <Stat icon={Shield} label="Defesa" value={30} />
-                            <Stat icon={BrainCircuit} label="Passe" value={85} />
+                            <Stat icon={BarChart} label="RITMO" value={82} />
+                            <Stat icon={Dribbble} label="Drible" value={88} />
+                            <Stat icon={Shield} label="Defesa" value={81} />
+                            <Stat icon={BrainCircuit} label="Passe" value={92} />
                             <Stat icon={Eye} label="VISÃO" value={99} />
                         </div>
 
