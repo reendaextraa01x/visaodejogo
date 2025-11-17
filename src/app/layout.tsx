@@ -1,6 +1,21 @@
 import type {Metadata} from 'next';
+import { Bebas_Neue, Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
+import { cn } from '@/lib/utils';
+
+const bebasNeue = Bebas_Neue({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: '400',
+  variable: '--font-bebas-neue',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
   title: 'Visão de Jogo | Raspadinha Premiada de Futebol',
@@ -14,15 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="font-body antialiased">
+      <body className={cn('font-body antialiased select-none', inter.variable, bebasNeue.variable)}>
         {children}
         <Toaster />
       </body>

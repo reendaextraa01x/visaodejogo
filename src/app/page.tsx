@@ -11,7 +11,7 @@ import { BranchSeparator } from '@/components/branch-separator';
 
 export default function Home() {
   return (
-    <div className="bg-background min-h-screen w-full overflow-hidden">
+    <div className="bg-background min-h-screen w-full overflow-x-hidden">
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-background via-background to-black/50 z-0"></div>
       
       {/* Background glow elements */}
