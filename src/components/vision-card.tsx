@@ -48,7 +48,7 @@ export const VisionCard = () => {
                     )}
                 />
                 <div 
-                    className="relative w-[80vw] h-[112vw] max-w-[320px] max-h-[450px] sm:w-[320px] sm:h-[450px] perspective-1000 cursor-pointer group"
+                    className="relative w-[80vw] h-[112vw] max-w-[320px] max-h-[450px] sm:w-[320px] sm:h-[450px] md:w-[360px] md:h-[500px] perspective-1000 cursor-pointer group"
                     onClick={handleFlip}
                 >
                     <div
@@ -61,20 +61,20 @@ export const VisionCard = () => {
                         <div className="absolute w-full h-full backface-hidden overflow-hidden rounded-2xl bg-gradient-to-br from-card to-background border-2 border-primary/20 shadow-2xl flex flex-col items-center justify-center p-8">
                              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                              <Ticket className="w-40 h-40 text-primary opacity-20 group-hover:opacity-30 group-hover:scale-110 transition-all duration-300" />
-                             <h3 className="font-headline text-3xl text-foreground drop-shadow-lg mt-4 z-10">Toque para Revelar</h3>
-                             <p className="text-muted-foreground z-10">Sua raspadinha da sorte aguarda...</p>
+                             <h3 className="font-headline text-3xl text-foreground drop-shadow-lg mt-4">Toque para Revelar</h3>
+                             <p className="text-muted-foreground">Sua raspadinha da sorte aguarda...</p>
                         </div>
 
                         {/* Card Back */}
                         <div className="absolute w-full h-full backface-hidden rotate-y-180 overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-card to-background border-2 border-primary shadow-2xl flex flex-col justify-between p-4 md:p-6">
                             <div className={cn("absolute top-0 left-[-100%] w-full h-full bg-shine-gradient transition-opacity", isRevealed ? "animate-shine opacity-100" : "opacity-0")}></div>
                             <div className="text-center relative z-10">
-                                <Image src="https://i.imgur.com/4PoDYHJ.png" alt="Sloth with a crystal ball" width={64} height={64} className="w-16 h-16 mx-auto" />
-                                <h3 className="font-headline text-xl md:text-2xl text-primary mt-2">PREGUIÇA VIDENTE</h3>
-                                <p className="font-bold text-foreground text-sm md:text-base">VISÃO DE JOGO</p>
+                                <Image src="https://i.imgur.com/4PoDYHJ.png" alt="Sloth with a crystal ball" width={64} height={64} className="w-12 h-12 md:w-16 md:h-16 mx-auto" />
+                                <h3 className="font-headline text-lg md:text-2xl text-primary mt-2">PREGUIÇA VIDENTE</h3>
+                                <p className="font-bold text-foreground text-xs md:text-base">VISÃO DE JOGO</p>
                             </div>
                             
-                            <div className="space-y-2 md:space-y-3 relative z-10">
+                            <div className="space-y-1 md:space-y-3 relative z-10">
                                 <Stat icon={BarChart} label="RITMO" value={82} />
                                 <Stat icon={Dribbble} label="Drible" value={88} />
                                 <Stat icon={Shield} label="Defesa" value={81} />
@@ -84,7 +84,7 @@ export const VisionCard = () => {
 
                             <div className="text-center bg-black/30 p-2 rounded-lg border-t-2 border-primary/50 relative z-10">
                                 <p className="text-muted-foreground text-xs">PREVISÃO</p>
-                                <p className="font-bold text-base md:text-lg text-foreground">{prediction}</p>
+                                <p className="font-bold text-sm md:text-lg text-foreground">{prediction}</p>
                                 <p className="text-xs md:text-sm text-primary/80 font-semibold mt-1">sorte de 89% aplicada</p>
                             </div>
                         </div>
