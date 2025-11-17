@@ -12,9 +12,9 @@ import { useCardRevealStore } from '@/store/card-reveal-store';
 
 const Stat = ({ icon: Icon, label, value }: { icon: React.ElementType, label: string, value: string | number }) => (
     <div className="flex items-center gap-2">
-        <Icon className="w-4 h-4 text-primary" />
-        <span className="font-bold text-lg">{value}</span>
-        <span className="text-sm text-muted-foreground">{label}</span>
+        <Icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+        <span className="font-bold text-lg md:text-xl">{value}</span>
+        <span className="text-sm md:text-base text-muted-foreground">{label}</span>
     </div>
 );
 
@@ -39,7 +39,7 @@ export const VisionCard = () => {
     };
 
     return (
-        <div className="flex flex-col items-center gap-6 w-full max-w-xs sm:max-w-sm md:max-w-md">
+        <div className="flex flex-col items-center gap-6 w-full max-w-xs sm:max-w-sm md:max-w-md animate-fade-in-up">
             <div className="relative group/card">
                 <div
                     className={cn(
@@ -84,7 +84,7 @@ export const VisionCard = () => {
 
                             <div className="text-center bg-black/30 p-2 rounded-lg border-t-2 border-primary/50 relative z-10">
                                 <p className="text-muted-foreground text-sm">PREVISÃO</p>
-                                <p className="font-bold text-lg text-foreground">{prediction}</p>
+                                <p className="font-bold text-lg md:text-xl text-foreground">{prediction}</p>
                                 <p className="text-sm text-primary/80 font-semibold mt-1">sorte de 89% aplicada</p>
                             </div>
                         </div>
@@ -93,7 +93,7 @@ export const VisionCard = () => {
             </div>
 
             {isRevealed && (
-                <div className="hidden md:block w-full max-w-sm animate-fade-in text-center bg-card/80 backdrop-blur-sm p-6 rounded-lg shadow-lg border border-primary/20">
+                <div className="hidden md:block w-full max-w-sm animate-fade-in-up text-center bg-card/80 backdrop-blur-sm p-6 rounded-lg shadow-lg border border-primary/20">
                     <h3 className="font-headline text-2xl text-foreground mb-2">A Sorte foi Lançada!</h3>
                     <p className="text-muted-foreground mb-4">Sua raspadinha premiada está pronta. Resgate agora e veja se você ganhou!</p>
                     <Link href="https://example.com/page2" target="_blank" rel="noopener noreferrer">
