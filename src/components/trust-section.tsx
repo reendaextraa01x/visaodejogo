@@ -38,8 +38,8 @@ export const TrustSection = () => (
     <div className="absolute inset-0 bg-radial-gradient(ellipse_at_center,rgba(var(--primary),0.1),transparent_50%) [mask-image:linear-gradient(180deg,transparent,black,transparent)]"></div>
     <div className="absolute inset-x-0 top-0 -bottom-10 opacity-10">
         <svg width="100%" height="100%" viewBox="0 0 800 200" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M-10 100 C 150 -20, 250 220, 400 100 S 650 220, 810 100" stroke="#854d0e" stroke-width="3" />
-            <path d="M-10 120 C 150 0, 250 240, 400 120 S 650 240, 810 120" stroke="#854d0e" stroke-width="2" />
+            <path d="M-10 100 C 150 -20, 250 220, 400 100 S 650 220, 810 100" stroke="#854d0e" strokeWidth="3" />
+            <path d="M-10 120 C 150 0, 250 240, 400 120 S 650 240, 810 120" stroke="#854d0e" strokeWidth="2" />
         </svg>
     </div>
     <div className="relative mx-auto grid max-w-5xl grid-cols-1 items-center justify-items-center gap-12 md:grid-cols-3">
