@@ -34,7 +34,7 @@ const Countdown = () => {
     }, [timeLeft]);
 
     return (
-        <div className="bg-destructive/80 text-white font-bold py-2 px-6 rounded-full mb-6 text-lg animate-pulse">
+        <div className="bg-destructive/80 text-white font-bold py-2 px-6 rounded-full mb-6 text-base md:text-lg animate-pulse">
             OFERTA TERMINA EM: {String(timeLeft.minutes).padStart(2, '0')}:{String(timeLeft.seconds).padStart(2, '0')}
         </div>
     );
@@ -43,24 +43,24 @@ const Countdown = () => {
 
 export const FinalCta = () => {
     return (
-        <section className="hidden md:block py-20">
-            <div className="bg-card/50 border border-border/50 backdrop-blur-sm rounded-xl p-12 flex flex-col items-center shadow-2xl relative overflow-hidden">
+        <section className="py-12 md:py-20">
+            <div className="bg-card/50 border border-border/50 backdrop-blur-sm rounded-xl p-8 md:p-12 flex flex-col items-center shadow-2xl relative overflow-hidden">
                 <div className="absolute -top-20 -left-20 w-60 h-60 bg-primary/20 rounded-full filter blur-3xl animate-pulse"></div>
                 <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-primary/20 rounded-full filter blur-3xl animate-pulse animation-delay-2000"></div>
                 
                 <Countdown />
                 
                 <Logo />
-                <h2 className="font-headline text-4xl md:text-5xl text-foreground mt-6 mb-2">Sua Última Chance de Mudar o Jogo. Vai Arriscar ou Vai Lucrar?</h2>
-                <p className="text-lg text-muted-foreground mb-8 max-w-xl">
+                <h2 className="font-headline text-3xl md:text-5xl text-foreground mt-6 mb-2">Sua Última Chance de Mudar o Jogo. Vai Arriscar ou Vai Lucrar?</h2>
+                <p className="text-base md:text-lg text-muted-foreground mb-8 max-w-xl">
                     A preguiça já fez a parte dela. Agora a decisão é sua. Sua próxima raspadinha pode ser a premiada.
                 </p>
                 <Link href="https://example.com/page2" target="_blank" rel="noopener noreferrer">
                     <Button
                         size="lg"
-                        className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-xl h-16 rounded-full shadow-lg shadow-primary/30 transition-transform hover:scale-105 focus:shadow-primary/40 focus:ring-2 focus:ring-offset-2 focus:ring-primary px-10"
+                        className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-lg md:text-xl h-14 md:h-16 rounded-full shadow-lg shadow-primary/30 transition-transform hover:scale-105 focus:shadow-primary/40 focus:ring-2 focus:ring-offset-2 focus:ring-primary px-8 md:px-10"
                     >
-                        <Sparkles className="mr-3 h-6 w-6" />
+                        <Sparkles className="mr-3 h-5 w-5 md:h-6 md:w-6" />
                         RESGATAR PRÊMIO AGORA
                     </Button>
                 </Link>
