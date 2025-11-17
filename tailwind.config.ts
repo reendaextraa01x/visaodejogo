@@ -124,13 +124,13 @@ export default {
           '0%': { left: '-100%' },
           '100%': { left: '100%' },
         },
-        'rotate-glow': {
-          '0%': {
-            transform: 'rotate(0deg)',
-          },
-          '100%': {
-            transform: 'rotate(360deg)',
-          }
+        'float': {
+            '0%, 100%': { transform: 'translateY(0) rotate(-5deg)' },
+            '50%': { transform: 'translateY(-20px) rotate(5deg)' },
+        },
+        'float-reverse': {
+            '0%, 100%': { transform: 'translateY(0) rotate(3deg)' },
+            '50%': { transform: 'translateY(15px) rotate(-3deg)' },
         }
       },
       backgroundImage: {
@@ -145,7 +145,8 @@ export default {
         'progress-bar': 'progress-bar 5s linear forwards',
         'move-slow': 'move-slow 20s ease-in-out infinite alternate',
         'shine': 'shine 0.8s ease-in-out',
-        'rotate-glow': 'rotate-glow 4s linear infinite',
+        'float': 'float 8s ease-in-out infinite',
+        'float-reverse': 'float-reverse 10s ease-in-out infinite',
       },
       rotate: {
         'x-6': '6deg',
