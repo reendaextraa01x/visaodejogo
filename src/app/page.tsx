@@ -8,7 +8,6 @@ import { BenefitsSection } from '@/components/benefits-section';
 import { Testimonials } from '@/components/testimonials';
 import { FinalCta } from '@/components/final-cta';
 import { BranchSeparator } from '@/components/branch-separator';
-import { TiktokSection } from '@/components/tiktok-section';
 
 export default function Home() {
   return (
@@ -27,8 +26,6 @@ export default function Home() {
         <TrustSection />
         <BranchSeparator />
         <HowItWorks />
-        <BranchSeparator />
-        <TiktokSection />
         <BranchSeparator />
         <BenefitsSection />
         <BranchSeparator />

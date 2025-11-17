@@ -5,30 +5,6 @@
       "description": "Golden texture for scratchcard",
       "imageUrl": "https://images.unsplash.com/photo-1598289431512-b970a552d4c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxnb2xkZW4lMjB0ZXh0dXJlfGVufDB8fHx8MTc2NTk0MzYwN3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "gold texture"
-    },
-    {
-      "id": "tiktok-1",
-      "description": "Soccer player celebrating a goal",
-      "imageUrl": "https://images.unsplash.com/photo-1561917423-2ce508445fe4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzb2NjZXIlMjBjZWxlYnJhdGlvbnxlbnwwfHx8fDE3NjMzMjIzMzl8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "soccer celebration"
-    },
-    {
-      "id": "tiktok-2",
-      "description": "Excited fan in a stadium",
-      "imageUrl": "https://images.unsplash.com/photo-1758612897440-554531eca46a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxleGNpdGVkJTIwZmFufGVufDB8fHx8MTc2MzM0NTEwNnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "excited fan"
-    },
-    {
-      "id": "tiktok-3",
-      "description": "Soccer trophy being lifted",
-      "imageUrl": "https://images.unsplash.com/photo-1580831800257-f83135932664?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx0cm9waHklMjBsaWZ0fGVufDB8fHx8MTc2MzM0NTEwNnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "trophy lift"
-    },
-    {
-      "id": "tiktok-4",
-      "description": "Stadium lights at night",
-      "imageUrl": "https://images.unsplash.com/photo-1531766706579-15318f219806?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzdGFkaXVtJTIwbGlnaHRzfGVufDB8fHx8MTc2MzMwNDExNXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "stadium lights"
     }
   ]
 }
