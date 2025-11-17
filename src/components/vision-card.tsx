@@ -12,9 +12,9 @@ import { useCardRevealStore } from '@/store/card-reveal-store';
 
 const Stat = ({ icon: Icon, label, value }: { icon: React.ElementType, label: string, value: string | number }) => (
     <div className="flex items-center gap-2">
-        <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-        <span className="font-bold text-lg sm:text-2xl">{value}</span>
-        <span className="text-sm sm:text-base text-muted-foreground">{label}</span>
+        <Icon className="w-4 h-4 text-primary" />
+        <span className="font-bold text-lg">{value}</span>
+        <span className="text-sm text-muted-foreground">{label}</span>
     </div>
 );
 
@@ -77,15 +77,15 @@ export const VisionCard = () => {
                         </div>
 
                         {/* Card Back */}
-                        <div className="absolute w-full h-full backface-hidden rotate-y-180 overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-card to-background border-2 border-primary shadow-2xl flex flex-col justify-between p-4 md:p-6">
+                        <div className="absolute w-full h-full backface-hidden rotate-y-180 overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-card to-background border-2 border-primary shadow-2xl flex flex-col justify-between p-4">
                             <div className={cn("absolute top-0 left-[-100%] w-full h-full bg-shine-gradient transition-opacity", isRevealed ? "animate-shine opacity-100" : "opacity-0")}></div>
                             <div className="relative z-10 text-center">
-                                <Image src="https://i.imgur.com/4PoDYHJ.png" alt="Sloth with a crystal ball" width={64} height={64} className="w-12 h-12 md:w-16 md:h-16 mx-auto" />
-                                <h3 className="font-headline text-xl sm:text-3xl md:text-3xl text-primary mt-2">PREGUIÇA VIDENTE</h3>
-                                <p className="font-bold text-foreground text-lg sm:text-2xl md:text-2xl">VISÃO DE JOGO</p>
+                                <Image src="https://i.imgur.com/4PoDYHJ.png" alt="Sloth with a crystal ball" width={64} height={64} className="w-12 h-12 mx-auto" />
+                                <h3 className="font-headline text-xl text-primary mt-1">PREGUIÇA VIDENTE</h3>
+                                <p className="font-bold text-foreground text-lg">VISÃO DE JOGO</p>
                             </div>
                             
-                            <div className="relative z-10 space-y-2 sm:space-y-3 md:space-y-4">
+                            <div className="relative z-10 space-y-2 p-2">
                                 <Stat icon={BarChart} label="RITMO" value={82} />
                                 <Stat icon={Dribbble} label="Drible" value={88} />
                                 <Stat icon={Shield} label="Defesa" value={81} />
@@ -93,10 +93,10 @@ export const VisionCard = () => {
                                 <Stat icon={Eye} label="VISÃO" value={99} />
                             </div>
 
-                            <div className="relative z-10 text-center bg-black/30 p-2 sm:p-3 rounded-lg border-t-2 border-primary/50">
-                                <p className="text-muted-foreground text-xs sm:text-sm">PREVISÃO</p>
-                                <p className="font-bold text-xl sm:text-3xl md:text-4xl text-foreground">{prediction}</p>
-                                <p className="text-xs sm:text-sm text-primary/80 font-semibold mt-1">sorte de 89% aplicada</p>
+                            <div className="relative z-10 text-center bg-black/30 p-2 rounded-lg border-t-2 border-primary/50">
+                                <p className="text-muted-foreground text-xs">PREVISÃO</p>
+                                <p className="font-bold text-2xl text-foreground">{prediction}</p>
+                                <p className="text-xs text-primary/80 font-semibold">sorte de 89% aplicada</p>
                             </div>
                         </div>
                     </div>
