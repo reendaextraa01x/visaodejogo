@@ -13,8 +13,8 @@ import { useCardRevealStore } from '@/store/card-reveal-store';
 const Stat = ({ icon: Icon, label, value }: { icon: React.ElementType, label: string, value: string | number }) => (
     <div className="flex items-center gap-2">
         <Icon className="w-4 h-4 text-primary" />
-        <span className="font-bold text-base md:text-lg">{value}</span>
-        <span className="text-xs md:text-sm text-muted-foreground">{label}</span>
+        <span className="font-bold text-lg">{value}</span>
+        <span className="text-sm text-muted-foreground">{label}</span>
     </div>
 );
 
@@ -70,11 +70,11 @@ export const VisionCard = () => {
                             <div className={cn("absolute top-0 left-[-100%] w-full h-full bg-shine-gradient transition-opacity", isRevealed ? "animate-shine opacity-100" : "opacity-0")}></div>
                             <div className="text-center relative z-10">
                                 <Image src="https://i.imgur.com/4PoDYHJ.png" alt="Sloth with a crystal ball" width={64} height={64} className="w-12 h-12 md:w-16 md:h-16 mx-auto" />
-                                <h3 className="font-headline text-lg md:text-2xl text-primary mt-2">PREGUIÇA VIDENTE</h3>
-                                <p className="font-bold text-foreground text-xs md:text-base">VISÃO DE JOGO</p>
+                                <h3 className="font-headline text-2xl md:text-2xl text-primary mt-2">PREGUIÇA VIDENTE</h3>
+                                <p className="font-bold text-foreground text-sm md:text-base">VISÃO DE JOGO</p>
                             </div>
                             
-                            <div className="space-y-1 md:space-y-3 relative z-10">
+                            <div className="space-y-2 md:space-y-3 relative z-10">
                                 <Stat icon={BarChart} label="RITMO" value={82} />
                                 <Stat icon={Dribbble} label="Drible" value={88} />
                                 <Stat icon={Shield} label="Defesa" value={81} />
@@ -83,9 +83,9 @@ export const VisionCard = () => {
                             </div>
 
                             <div className="text-center bg-black/30 p-2 rounded-lg border-t-2 border-primary/50 relative z-10">
-                                <p className="text-muted-foreground text-xs">PREVISÃO</p>
-                                <p className="font-bold text-sm md:text-lg text-foreground">{prediction}</p>
-                                <p className="text-xs md:text-sm text-primary/80 font-semibold mt-1">sorte de 89% aplicada</p>
+                                <p className="text-muted-foreground text-sm">PREVISÃO</p>
+                                <p className="font-bold text-lg text-foreground">{prediction}</p>
+                                <p className="text-sm text-primary/80 font-semibold mt-1">sorte de 89% aplicada</p>
                             </div>
                         </div>
                     </div>
