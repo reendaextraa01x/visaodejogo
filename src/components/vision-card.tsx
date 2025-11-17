@@ -1,34 +1,13 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, a from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { Sparkles, BarChart, BrainCircuit, Eye, Dribbble, Shield, Ticket } from 'lucide-react';
 import type { SVGProps } from 'react';
-
-const SlothWithBallIcon = (props: SVGProps<SVGSVGElement>) => (
-    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <path
-        d="M14 30C8.47715 30 4 25.5228 4 20C4 14.4772 8.47715 10 14 10C19.5228 10 24 14.4772 24 20C24 25.5228 19.5228 30 14 30Z"
-        className="fill-current text-amber-200"
-      />
-      <path
-        d="M7 16H21C21.8284 16 22.5 16.6716 22.5 17.5V19.5C22.5 20.3284 21.8284 21 21 21H7C6.17157 21 5.5 20.3284 5.5 19.5V17.5C5.5 16.6716 6.17157 16 7 16Z"
-        fill="black"
-      />
-      <path d="M12.5 24C12.5 24.5523 13.1716 25 14 25C14.8284 25 15.5 24.5523 15.5 24H12.5Z" fill="black" />
-      <g>
-        <circle cx="22" cy="8" r="6" fill="white" />
-        <path fill="black" d="M19.1716 5.17157L22 2L24.8284 5.17157L22 8L19.1716 5.17157Z" />
-        <path fill="black" d="M16 8L19.1716 10.8284L22 8L19.1716 5.17157L16 8Z" />
-        <path fill="black" d="M22 14L24.8284 10.8284L22 8L19.1716 10.8284L22 14Z" />
-        <path fill="black" d="M28 8L24.8284 5.17157L22 8L24.8284 10.8284L28 8Z" />
-      </g>
-    </svg>
-);
-
+import Image from 'next/image';
 
 const Stat = ({ icon: Icon, label, value }: { icon: React.ElementType, label: string, value: string | number }) => (
     <div className="flex items-center gap-2">
@@ -80,7 +59,7 @@ export const VisionCard = () => {
                     <div className="absolute w-full h-full backface-hidden rotate-y-180 overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-card to-background border-2 border-primary shadow-2xl flex flex-col justify-between p-6">
                         <div className={cn("absolute top-0 left-[-100%] w-full h-full bg-shine-gradient transition-opacity", isRevealed ? "animate-shine opacity-100" : "opacity-0")}></div>
                         <div className="text-center relative z-10">
-                            <SlothWithBallIcon className="w-20 h-20 mx-auto text-primary" />
+                            <Image src="https://i.imgur.com/4PoDYHJ.png" alt="Sloth with a crystal ball" width={80} height={80} className="w-20 h-20 mx-auto" />
                             <h3 className="font-headline text-2xl text-primary mt-2">PREGUIÇA VIDENTE</h3>
                             <p className="font-bold text-foreground">VISÃO DE JOGO</p>
                         </div>
