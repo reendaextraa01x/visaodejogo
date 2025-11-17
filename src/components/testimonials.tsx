@@ -23,7 +23,7 @@ const testimonials = [
 export const Testimonials = () => {
     return (
         <section className="py-12 md:py-20 animate-fade-in-up animation-delay-600">
-            <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-2">Quem Já Raspou, Lucrou. E Eles Contam Como Foi.</h2>
+            <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-2">Quem Já Raspou, <span className="text-primary drop-shadow-[0_0_8px_hsl(var(--primary))]">Lucrou</span>. E Eles Contam Como Foi.</h2>
             <p className="text-lg text-muted-foreground mb-16">
                 A sorte favorece os que acreditam. Veja o que nossos ganhadores estão dizendo.
             </p>
