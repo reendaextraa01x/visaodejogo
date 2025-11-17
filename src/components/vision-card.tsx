@@ -78,7 +78,7 @@ export const VisionCard = () => {
                         <div className="text-center bg-black/30 p-2 rounded-lg border-t-2 border-primary/50 relative z-10">
                             <p className="text-muted-foreground text-xs">PREVISÃO</p>
                             <p className="font-bold text-lg text-foreground">{prediction}</p>
-                            <p className="text-sm text-primary/80 font-semibold mt-1">Sorte de 89%</p>
+                            <p className="text-sm text-primary/80 font-semibold mt-1">sorte de 89% aplicada</p>
                         </div>
                     </div>
                 </div>
