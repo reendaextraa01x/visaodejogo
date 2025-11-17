@@ -21,16 +21,7 @@ export default function Home() {
       <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-primary/10 rounded-full filter blur-[150px] opacity-50 animate-move-slow animation-delay-2000"></div>
        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-secondary/5 rounded-full filter blur-[100px] opacity-30 animate-move-slow animation-delay-4000"></div>
 
-       {/* Tree Trunk and Leaves */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-full pointer-events-none opacity-20">
-            <Image
-                src="https://i.imgur.com/k2wV0n0.png"
-                alt="Tree trunk"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="top center"
-            />
-        </div>
+       {/* Leaves */}
         <Leaf className="absolute top-[10%] left-[30%] w-16 h-16 opacity-30 animate-float" style={{ animationDuration: '12s', animationDelay: '0s' }} />
         <Leaf className="absolute top-[25%] left-[65%] w-12 h-12 opacity-30 animate-float-reverse" style={{ animationDuration: '15s', animationDelay: '1s' }} />
         <Leaf className="absolute top-[40%] left-[40%] w-20 h-20 opacity-20 animate-float" style={{ animationDuration: '10s', animationDelay: '0.5s' }}/>
