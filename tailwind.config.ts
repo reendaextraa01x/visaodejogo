@@ -153,7 +153,7 @@ export default {
         'shine': 'shine 0.8s ease-in-out',
         'float': 'float ease-in-out infinite',
         'float-reverse': 'float-reverse ease-in-out infinite',
-        'blink': 'blink 1s ease-in-out infinite',
+        'blink': 'blink 15s ease-in-out infinite',
       },
       rotate: {
         'x-6': '6deg',
