@@ -22,7 +22,7 @@ const SlothFaceIcon = (props: SVGProps<SVGSVGElement>) => (
   );
 
 const trustData = [
-  { icon: Users, text: '+ de 87 mil seguidores' },
+  { icon: Users, text: '+ de 10 mil seguidores' },
   { icon: Award, text: 'Acima de 78% de acertos' },
   { icon: SlothFaceIcon, text: 'A única preguiça vidente do Brasil' },
 ];
