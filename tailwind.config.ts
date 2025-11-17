@@ -135,8 +135,8 @@ export default {
             '100%': { transform: 'translateY(0px) rotateZ(0deg) rotateX(0deg)' },
         },
         'blink': {
-            '0%, 90%, 100%': { transform: 'scaleY(1)' },
-            '95%': { transform: 'scaleY(0.1)' },
+            '0%, 95%, 100%': { transform: 'scaleY(1)' },
+            '97.5%': { transform: 'scaleY(0.1)' },
         }
       },
       backgroundImage: {
@@ -153,7 +153,7 @@ export default {
         'shine': 'shine 0.8s ease-in-out',
         'float': 'float ease-in-out infinite',
         'float-reverse': 'float-reverse ease-in-out infinite',
-        'blink': 'blink 10s ease-in-out infinite',
+        'blink': 'blink 15s ease-in-out infinite',
       },
       rotate: {
         'x-6': '6deg',

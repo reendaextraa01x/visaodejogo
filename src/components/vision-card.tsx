@@ -13,7 +13,7 @@ import { useCardRevealStore } from '@/store/card-reveal-store';
 const Stat = ({ icon: Icon, label, value }: { icon: React.ElementType, label: string, value: string | number }) => (
     <div className="flex items-center gap-2">
         <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-        <span className="font-bold text-lg sm:text-xl md:text-2xl">{value}</span>
+        <span className="font-bold text-lg sm:text-2xl">{value}</span>
         <span className="text-sm sm:text-base text-muted-foreground">{label}</span>
     </div>
 );
@@ -81,8 +81,8 @@ export const VisionCard = () => {
                             <div className={cn("absolute top-0 left-[-100%] w-full h-full bg-shine-gradient transition-opacity", isRevealed ? "animate-shine opacity-100" : "opacity-0")}></div>
                             <div className="relative z-10 text-center">
                                 <Image src="https://i.imgur.com/4PoDYHJ.png" alt="Sloth with a crystal ball" width={64} height={64} className="w-12 h-12 md:w-16 md:h-16 mx-auto" />
-                                <h3 className="font-headline text-xl sm:text-2xl md:text-3xl text-primary mt-2">PREGUIÇA VIDENTE</h3>
-                                <p className="font-bold text-foreground text-lg sm:text-xl md:text-2xl">VISÃO DE JOGO</p>
+                                <h3 className="font-headline text-xl sm:text-3xl md:text-3xl text-primary mt-2">PREGUIÇA VIDENTE</h3>
+                                <p className="font-bold text-foreground text-lg sm:text-2xl md:text-2xl">VISÃO DE JOGO</p>
                             </div>
                             
                             <div className="relative z-10 space-y-2 sm:space-y-3 md:space-y-4">
@@ -95,7 +95,7 @@ export const VisionCard = () => {
 
                             <div className="relative z-10 text-center bg-black/30 p-2 sm:p-3 rounded-lg border-t-2 border-primary/50">
                                 <p className="text-muted-foreground text-xs sm:text-sm">PREVISÃO</p>
-                                <p className="font-bold text-xl sm:text-2xl md:text-4xl text-foreground">{prediction}</p>
+                                <p className="font-bold text-xl sm:text-3xl md:text-4xl text-foreground">{prediction}</p>
                                 <p className="text-xs sm:text-sm text-primary/80 font-semibold mt-1">sorte de 89% aplicada</p>
                             </div>
                         </div>
