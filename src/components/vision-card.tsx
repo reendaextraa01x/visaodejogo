@@ -6,8 +6,9 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { Sparkles, BarChart, BrainCircuit, Eye, Dribbble, Shield, Ticket } from 'lucide-react';
-import type { SVGProps } from 'react';
 import Image from 'next/image';
+import { useCardRevealStore } from '@/store/card-reveal-store';
+
 
 const Stat = ({ icon: Icon, label, value }: { icon: React.ElementType, label: string, value: string | number }) => (
     <div className="flex items-center gap-2">
@@ -21,7 +22,9 @@ const Stat = ({ icon: Icon, label, value }: { icon: React.ElementType, label: st
 export const VisionCard = () => {
     const [prediction, setPrediction] = useState('');
     const [isFlipped, setIsFlipped] = useState(false);
-    const [isRevealed, setIsRevealed] = useState(false);
+    
+    // Usando o estado global
+    const { isRevealed, setRevealed } = useCardRevealStore();
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -32,7 +35,7 @@ export const VisionCard = () => {
     const handleFlip = () => {
         if (isFlipped) return;
         setIsFlipped(true);
-        setTimeout(() => setIsRevealed(true), 600);
+        setTimeout(() => setRevealed(true), 600);
     };
 
     return (
