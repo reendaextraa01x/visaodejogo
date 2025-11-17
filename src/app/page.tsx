@@ -21,20 +21,18 @@ export default function Home() {
        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-secondary/5 rounded-full filter blur-[100px] opacity-30 animate-move-slow animation-delay-4000"></div>
 
        {/* Vertical Branch SVG and Leaves */}
-       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-20 flex justify-center items-start">
-          <svg width="150" height="100%" viewBox="0 0 150 3000" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full">
-            <path d="M75.5 0V3000" stroke="#854d0e" strokeWidth="6"/>
-            <path d="M125.5 80C100.5 90 80.5 130 85.5 150" stroke="#854d0e" strokeWidth="4"/>
-            <path d="M75.5 300C95.5 310 115.5 340 105.5 360" stroke="#854d0e" strokeWidth="4"/>
-            <path d="M75.5 450C65.5 460 45.5 490 55.5 510" stroke="#854d0e" strokeWidth="4"/>
-            <path d="M75.5 650C95.5 660 115.5 690 105.5 710" stroke="#854d0e" strokeWidth="4"/>
-            <path d="M25.5 950C45.5 960 65.5 990 55.5 1010" stroke="#854d0e" strokeWidth="4"/>
-            <path d="M115.5 1250C95.5 1260 75.5 1290 85.5 1310" stroke="#854d0e" strokeWidth="4"/>
-            <path d="M75.5 1500C65.5 1510 45.5 1540 55.5 1560" stroke="#854d0e" strokeWidth="4"/>
-             <path d="M75.5 1850C95.5 1860 115.5 1890 105.5 1910" stroke="#854d0e" strokeWidth="4"/>
-             <path d="M75.5 2150C65.5 2160 45.5 2190 55.5 2210" stroke="#854d0e" strokeWidth="4"/>
-             <path d="M75.5 2450C95.5 2460 115.5 2490 105.5 2510" stroke="#854d0e" strokeWidth="4"/>
-             <path d="M75.5 2750C65.5 2760 45.5 2790 55.5 2810" stroke="#854d0e" strokeWidth="4"/>
+       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-30 flex justify-center items-start">
+          <svg width="200" height="100%" viewBox="0 0 200 3000" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full">
+            <path d="M100 0V3000" stroke="#78350f" strokeWidth="8"/>
+            <path d="M170 200C130 220 100 280 110 310" stroke="#78350f" strokeWidth="6"/>
+            <path d="M100 450C130 470 160 520 140 550" stroke="#78350f" strokeWidth="5"/>
+            <path d="M100 700C80 720 50 770 70 800" stroke="#78350f" strokeWidth="6"/>
+            <path d="M100 1000C130 1020 160 1070 140 1100" stroke="#78350f" strokeWidth="5"/>
+            <path d="M30 1350C60 1370 90 1420 70 1450" stroke="#78350f" strokeWidth="6"/>
+            <path d="M160 1700C130 1720 100 1770 110 1800" stroke="#78350f" strokeWidth="5"/>
+            <path d="M100 2000C80 2020 50 2070 70 2100" stroke="#78350f" strokeWidth="6"/>
+            <path d="M100 2350C130 2370 160 2420 140 2450" stroke="#78350f" strokeWidth="5"/>
+            <path d="M100 2700C80 2720 50 2770 70 2800" stroke="#78350f" strokeWidth="6"/>
           </svg>
         </div>
         <Leaf className="absolute top-[10%] left-[30%] w-16 h-16 opacity-10 animate-float" style={{ animationDelay: '0s' }} />
