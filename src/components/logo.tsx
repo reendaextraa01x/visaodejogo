@@ -1,7 +1,4 @@
-
-import type { SVGProps } from 'react';
 import Image from 'next/image';
-
 
 export const Logo = () => (
   <div className="flex items-center justify-center gap-2">
