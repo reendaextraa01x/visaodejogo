@@ -1,3 +1,4 @@
+
 import { VisionCard } from '@/components/vision-card';
 
 export const Hero = () => (
